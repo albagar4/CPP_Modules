@@ -62,3 +62,19 @@ std::string	PhoneBook::menuSelector(){
 		std::cout << "Eres tonto??" << std::endl;
 	return (input);
 }
+
+void	PhoneBook::fillFields(){
+	std::string	data[5];
+
+	for (int i = 0; i < 5; i++)
+	{
+		std::cout << this->contacts[0].getTitle(i);
+		std::getline(std::cin, data[i]);
+		if (data[i].empty())
+		{
+			std::cout << "You can't have an empty field!" << std::endl;
+			i--;
+		}
+		if (i == 3 && )
+	}
+}

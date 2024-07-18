@@ -10,4 +10,5 @@ public:
     void	addContact(std::string contactInfo[5]);
     void    shiftContact();
     std::string    menuSelector();
+    void    fillFields();
 };

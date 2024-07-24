@@ -1,19 +1,5 @@
 #include "Contact.hpp"
 
-std::string	Contact::getTitle(int i) const{
-	return (this->_title[i]);
-}
-
-std::string	Contact::getInfo(int i) const{
-	return (this->_info[i]);
-}
-
-void	Contact::setInfo(std::string data[5]){
-	for (int i = 0; i < 5; i++)
-		this->_info[i] = data[i];
-	return;
-}
-
 Contact::Contact(){
 	std::cout << "Calling contact constructor" << std::endl;
 	this->_title[0] = "First name: ";
@@ -26,6 +12,20 @@ Contact::Contact(){
 
 Contact::~Contact(){
 	std::cout << "Calling contact destructor" << std::endl;
+	return;
+}
+
+std::string	Contact::getTitle(int i) const{
+	return (this->_title[i]);
+}
+
+std::string	Contact::getInfo(int i) const{
+	return (this->_info[i]);
+}
+
+void	Contact::setInfo(std::string data[5]){
+	for (int i = 0; i < 5; i++)
+		this->_info[i] = data[i];
 	return;
 }
 

@@ -10,6 +10,15 @@ PhoneBook::~PhoneBook(){
 	return;
 }
 
+bool	PhoneBook::isAllDigit(std::string data){
+	for (int i = 0; i < (int)data.length(); i++)
+	{
+		if (!std::isdigit(data[i]))
+			return (false);
+	}
+	return (true);
+}
+
 void	PhoneBook::printContacts(){
 	for (int i = 0; i < 8; i++)
 	{
@@ -46,6 +55,35 @@ void	PhoneBook::shiftContact(){
 		this->contacts[i] = this->contacts[i + 1];
 }
 
+void	PhoneBook::displayAgenda(){
+	std::cout << " ------------------------------------------- ";
+	std::cout << std::endl;
+	std::cout << "|     Index|First Name| Last Name|  Nickname|" << std::endl;
+	std::cout << " ------------------------------------------- " << std::endl;
+	return;
+}
+
+void	PhoneBook::displayContact(std::string input){
+	std::cout << "prout" << input << std::endl;
+	return;
+}
+
+void	PhoneBook::searchContact(){
+	std::string	input;
+
+	this->displayAgenda();
+	std::cout << "Select a number: " << std::endl;
+	std::getline (std::cin, input);
+	if ((input[0] >= '1' && input[0] <= '8') && input.length() == 1)
+		this->displayContact(input);
+	else
+	{
+		std::cout << "The index you introduced is not correct" << std::endl;
+		this->searchContact();
+	}
+	return;
+}
+
 std::string	PhoneBook::menuSelector(){
 	std::string	input;
 
@@ -53,13 +91,13 @@ std::string	PhoneBook::menuSelector(){
 	std::cout << "- ADD" << std::endl << "- SEARCH" << std::endl << "- EXIT" << std::endl;
 	std::getline (std::cin, input);
 	if (input == "ADD")
-		;
-	if (input == "SEARCH")
-		;
-	if (input == "EXIT")
+		this->fillFields();
+	else if (input == "SEARCH")
+		this->searchContact();
+	else if (input == "EXIT")
 		;
 	else
-		std::cout << "Eres tonto??" << std::endl;
+		std::cout << "You must introduce a valid command" << std::endl;
 	return (input);
 }
 
@@ -75,6 +113,12 @@ void	PhoneBook::fillFields(){
 			std::cout << "You can't have an empty field!" << std::endl;
 			i--;
 		}
-		if (i == 3 && )
+		else if (i == 3 && (!this->isAllDigit(data[i])))
+		{
+			std::cout << "The phone number must be numeric!" << std::endl;
+			i--;
+		}
 	}
+	this->addContact(data);
+	return ;
 }

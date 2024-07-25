@@ -35,7 +35,7 @@ void	PhoneBook::addContact(std::string contactInfo[5]){
 	if (!this->contacts[7].empty())
 	{
 		this->shiftContact();
-		this->contacts[0].setInfo(contactInfo);
+		this->contacts[7].setInfo(contactInfo);
 	}
 	else
 	{
@@ -51,8 +51,16 @@ void	PhoneBook::addContact(std::string contactInfo[5]){
 }
 
 void	PhoneBook::shiftContact(){
+	std::string	cpy_data[5];
+
 	for (int i = 0; i < 7; i++)
-		this->contacts[i] = this->contacts[i + 1];
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			cpy_data[j] = this->contacts[i + 1].getInfo(j);
+			this->contacts[i].setInfo(cpy_data);
+		}
+	}
 }
 
 void	PhoneBook::displayAgenda(){
@@ -60,11 +68,30 @@ void	PhoneBook::displayAgenda(){
 	std::cout << std::endl;
 	std::cout << "|     Index|First Name| Last Name|  Nickname|" << std::endl;
 	std::cout << " ------------------------------------------- " << std::endl;
+	for (int i = 0; i < 8; i++)
+	{
+		std::cout << "|";
+		std::cout << std::right << std::setw(10) << i + 1;
+		for (int j = 0; j < 3; j++)
+		{
+			std::cout << "|";
+			if (this->contacts[i].getInfo(j).length() < 10)
+				std::cout << std::right << std::setw(10) << this->contacts[i].getInfo(j);
+			else
+				std::cout << this->contacts[i].getInfo(j).substr(0, 9) << ".";
+		}
+		std::cout << "|" << std::endl;
+	}
+	std::cout << " ------------------------------------------- " << std::endl;
 	return;
 }
 
 void	PhoneBook::displayContact(std::string input){
-	std::cout << "prout" << input << std::endl;
+	int	i;
+
+	i = atoi(input.c_str()) - 1;
+	for (int j = 0; j < 5; j++)
+		std::cout << this->contacts[i].getTitle(j) << this->contacts[i].getInfo(j) << std::endl;
 	return;
 }
 

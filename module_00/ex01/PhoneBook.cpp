@@ -1,12 +1,12 @@
 #include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook(){
-	std::cout << "Calling phonebook constructor" << std::endl;
+	// std::cout << "Calling phonebook constructor" << std::endl;
 	return;
 }
 
 PhoneBook::~PhoneBook(){
-	std::cout << "Calling phonebook destructor" << std::endl;
+	// std::cout << "Calling phonebook destructor" << std::endl;
 	return;
 }
 
@@ -17,18 +17,6 @@ bool	PhoneBook::isAllDigit(std::string data){
 			return (false);
 	}
 	return (true);
-}
-
-void	PhoneBook::printContacts(){
-	for (int i = 0; i < 8; i++)
-	{
-		// std::cout << "Contact no. " << i + 1 << std::endl;
-		for (int j = 0; j < 5; j++)
-		{
-			std::cout << this->contacts[i].getTitle(j);
-			std::cout << this->contacts[i].getInfo(j) << std::endl;
-		}
-	}
 }
 
 void	PhoneBook::addContact(std::string contactInfo[5]){
@@ -64,7 +52,7 @@ void	PhoneBook::shiftContact(){
 }
 
 void	PhoneBook::displayAgenda(){
-	std::cout << " ------------------------------------------- ";
+	std::cout << CYAN << " ------------------------------------------- ";
 	std::cout << std::endl;
 	std::cout << "|     Index|First Name| Last Name|  Nickname|" << std::endl;
 	std::cout << " ------------------------------------------- " << std::endl;
@@ -82,7 +70,7 @@ void	PhoneBook::displayAgenda(){
 		}
 		std::cout << "|" << std::endl;
 	}
-	std::cout << " ------------------------------------------- " << std::endl;
+	std::cout << " ------------------------------------------- " << RNL;
 	return;
 }
 
@@ -90,8 +78,13 @@ void	PhoneBook::displayContact(std::string input){
 	int	i;
 
 	i = atoi(input.c_str()) - 1;
-	for (int j = 0; j < 5; j++)
-		std::cout << this->contacts[i].getTitle(j) << this->contacts[i].getInfo(j) << std::endl;
+	if (!this->contacts[i].getInfo(0).empty())
+	{
+		for (int j = 0; j < 5; j++)
+			std::cout << CYAN << this->contacts[i].getTitle(j) << RESET << this->contacts[i].getInfo(j) << std::endl;
+	}
+	else
+		std::cout << RED << "The contact you chose is not settled" << RNL;
 	return;
 }
 
@@ -99,33 +92,38 @@ void	PhoneBook::searchContact(){
 	std::string	input;
 
 	this->displayAgenda();
-	std::cout << "Select a number: " << std::endl;
-	std::getline (std::cin, input);
+	std::cout << "Select a number: ";
+	if (!std::getline (std::cin, input, '\n'))
+		return;
 	if ((input[0] >= '1' && input[0] <= '8') && input.length() == 1)
 		this->displayContact(input);
 	else
 	{
-		std::cout << "The index you introduced is not correct" << std::endl;
+		std::cout << RED << "The index you introduced is not correct" << RNL;
 		this->searchContact();
 	}
 	return;
 }
 
-std::string	PhoneBook::menuSelector(){
-	std::string	input;
+void	PhoneBook::menuSelector(){
+	std::cout << std::endl << BLUE << "*WELCOME TO THE MENU OF YOUR PHONEBOOK*" << RNL << "Please, select an option:" << std::endl;
+	std::cout << "- ADD" << std::endl << "- SEARCH" << std::endl << "- EXIT" << std::endl << std::endl;
+	return ;
+}
 
-	std::cout << "Menu of your PhoneBook, please select an option:" << std::endl;
-	std::cout << "- ADD" << std::endl << "- SEARCH" << std::endl << "- EXIT" << std::endl;
-	std::getline (std::cin, input);
-	if (input == "ADD")
-		this->fillFields();
-	else if (input == "SEARCH")
-		this->searchContact();
-	else if (input == "EXIT")
-		;
-	else
-		std::cout << "You must introduce a valid command" << std::endl;
-	return (input);
+static int	fullTabs(std::string data)
+{
+	for (int i = 0; i < (int)data.length(); i++)
+	{
+		if (data[i] < 32)
+			return (1);
+	}
+	for (int i = 0; i < (int)data.length(); i++)
+	{
+		if (data[i] != 32)
+			return (0);
+	}
+	return (1);
 }
 
 void	PhoneBook::fillFields(){
@@ -133,16 +131,17 @@ void	PhoneBook::fillFields(){
 
 	for (int i = 0; i < 5; i++)
 	{
-		std::cout << this->contacts[0].getTitle(i);
-		std::getline(std::cin, data[i]);
-		if (data[i].empty())
+		std::cout << CYAN << this->contacts[0].getTitle(i) << RESET;
+		if (!std::getline(std::cin, data[i], '\n'))
+			return ;
+		if (data[i].empty() || fullTabs(data[i]) == 1)
 		{
-			std::cout << "You can't have an empty field!" << std::endl;
+			std::cout << RED << "You can't have an empty field or invalid chars!" << RNL;
 			i--;
 		}
 		else if (i == 3 && (!this->isAllDigit(data[i])))
 		{
-			std::cout << "The phone number must be numeric!" << std::endl;
+			std::cout << RED << "The phone number must be numeric!" << RNL;
 			i--;
 		}
 	}

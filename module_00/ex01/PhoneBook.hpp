@@ -6,11 +6,10 @@ private:
 public:
     PhoneBook();
     ~PhoneBook();
-    void           	printContacts();
     void	       	addContact(std::string contactInfo[5]);
     void           	shiftContact();
     void			fillFields();
-    std::string		menuSelector();
+    void    		menuSelector();
     bool            isAllDigit(std::string data);
     void            searchContact();
     void            displayAgenda();

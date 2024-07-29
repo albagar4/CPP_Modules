@@ -1,7 +1,7 @@
 #include "Contact.hpp"
 
 Contact::Contact(){
-	std::cout << "Calling contact constructor" << std::endl;
+	// std::cout << "Calling contact constructor" << std::endl;
 	this->_title[0] = "First name: ";
 	this->_title[1] = "Last name: ";
 	this->_title[2] = "Nickname: ";
@@ -11,7 +11,7 @@ Contact::Contact(){
 }
 
 Contact::~Contact(){
-	std::cout << "Calling contact destructor" << std::endl;
+	// std::cout << "Calling contact destructor" << std::endl;
 	return;
 }
 

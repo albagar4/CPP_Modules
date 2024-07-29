@@ -32,10 +32,12 @@ void	PhoneBook::addContact(std::string contactInfo[5]){
 			if (this->contacts[i].empty())
 			{
 				this->contacts[i].setInfo(contactInfo);
+				this->menuSelector();
 				return;
 			}
 		}
 	}
+	this->menuSelector();
 }
 
 void	PhoneBook::shiftContact(){
@@ -85,6 +87,7 @@ void	PhoneBook::displayContact(std::string input){
 	}
 	else
 		std::cout << RED << "The contact you chose is not settled" << RNL;
+	this->menuSelector();
 	return;
 }
 

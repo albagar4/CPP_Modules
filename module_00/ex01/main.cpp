@@ -5,9 +5,9 @@ int main ()
 	PhoneBook	phonebook;
 	std::string	input;
 	
+	phonebook.menuSelector();
 	while (input != "EXIT")
 	{
-		phonebook.menuSelector();
 		std::cout << GREEN;
 		if (!std::getline (std::cin, input, '\n') || input == "EXIT")
 			break ;

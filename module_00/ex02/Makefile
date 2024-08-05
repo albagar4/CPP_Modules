@@ -2,12 +2,12 @@ GREEN = \033[0;32m
 RED = \033[0;31m
 RESET = \033[0m
 
-NAME = phonebook
+NAME = account
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 INCLUDES = -I .
 
-SOURCES = main.cpp PhoneBook.cpp Contact.cpp
+SOURCES = Account.cpp tests.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
 all: $(NAME)

@@ -7,9 +7,8 @@
 
 int	main(void){
 	Zombie	zombie("Arthur");
-	Zombie	*_newZombie;
+	Zombie	*_newZombie = newZombie("Tadeo");
 
-	_newZombie = newZombie("Tadeo");
 	randomChump("Thomas");
 	zombie.announce();
 	_newZombie->announce();

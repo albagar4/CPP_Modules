@@ -2,7 +2,7 @@ GREEN = \033[0;32m
 RED = \033[0;31m
 RESET = \033[0m
 
-NAME = UnnecesaryViolence
+NAME = UnnecessaryViolence
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 INCLUDES = -I .

@@ -11,9 +11,9 @@ HumanB::~HumanB(){
 }
 
 void	HumanB::attack(){
-	std::cout << this->name << " has attacked with his " << this->WeaponB->getType();
+	std::cout << this->name << " has attacked with his " << BRED << this->WeaponB->getType() << RNL;
 }
 
 void	HumanB::setWeapon(Weapon &newWeapon){
-	this->WeaponB = newWeapon;
+	this->WeaponB = &newWeapon;
 }

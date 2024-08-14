@@ -2,21 +2,21 @@
 #include "HumanB.hpp"
 #include "Weapon.hpp"
 
-int main(void)
+int main()
 {
 	{
-		Weapon club = Weapon("crude spiked club");
+		Weapon club = Weapon("baseball bat");
 		HumanA bob("Bob", club);
 		bob.attack();
-		club.setType("some other type of club");
+		club.setType("knife");
 		bob.attack();
 	}
 	{
-		Weapon club = Weapon("crude spiked club");
+		Weapon club = Weapon("baseball bat");
 		HumanB jim("Jim");
 		jim.setWeapon(club);
 		jim.attack();
-		club.setType("some other type of club");
+		club.setType("glock 18");
 		jim.attack();
 	}
 	return 0;

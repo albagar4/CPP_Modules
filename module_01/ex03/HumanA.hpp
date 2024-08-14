@@ -21,8 +21,8 @@
 
 class HumanA{
 private:
+	Weapon	*WeaponA;
 	std::string	name;
-	Weapon 		*WeaponA;
 public:
 	HumanA(std::string name, Weapon &weapon);
 	~HumanA();

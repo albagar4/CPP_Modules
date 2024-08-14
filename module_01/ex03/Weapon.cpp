@@ -1,24 +1,22 @@
 #include "Weapon.hpp"
 
 Weapon::Weapon(){
-
+	std::cout << "Weapon was created!" << std::endl;
 }
 
-Weapon::Weapon(std::string type){
-	this->type = type;
-	std::cout << "Weapon " << this->getType() << " has been created" << std::endl;
+Weapon::Weapon(std::string name){
+	this->type = name;
+	std::cout << "Weapon " << GREEN << this->type << RESET << " was created" << std::endl;
 }
 
 Weapon::~Weapon(){
-	std::cout << "Weapon has been erased" << std::endl;
+	std::cout << "Weapon was destroyed" << std::endl;
 }
 
 const std::string&	Weapon::getType(){
-	const std::string	&typeRef = this->type;
-	return (typeRef);
+	return (this->type);
 }
 
-void    Weapon::setType(std::string newType){
+void	Weapon::setType(std::string newType){
 	this->type = newType;
-	return ;
 }

@@ -1,10 +1,9 @@
-#ifndef HUMANB_HPP
-# define HUMANB_HPP
+#ifndef WEAPON_HPP
+# define WEAPON_HPP
 #include <iostream>
 #include <string>
 #include <iomanip>
 #include <stdlib.h>
-#include "Weapon.hpp"
 
 #define RED    "\033[0;31m"
 #define BRED    "\033[1;31m"
@@ -19,15 +18,15 @@
 #define LGRAY "\033[0;37m"
 #define BOLD "\033[1;37m"
 
-class HumanB{
+class Weapon{
 private:
-	Weapon	WeaponB;
-	std::string	name;
+    std::string type;
 public:
-	HumanB(std::string	name);
-	~HumanB();
-	void	attack();
-	void	setWeapon(Weapon newWeapon);
+	Weapon();
+    Weapon(std::string type);
+    ~Weapon();
+    const std::string	&getType();
+    void	setType(std::string newType);
 };
 
 #endif

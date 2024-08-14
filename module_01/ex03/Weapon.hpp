@@ -18,15 +18,16 @@
 #define LGRAY "\033[0;37m"
 #define BOLD "\033[1;37m"
 
+
 class Weapon{
 private:
-    std::string type;
+	std::string	type;
 public:
 	Weapon();
-    Weapon(std::string type);
-    ~Weapon();
-    const std::string	&getType();
-    void	setType(std::string newType);
+	Weapon(std::string name);
+	~Weapon();
+	const std::string&	getType();
+	void	setType(std::string newType);
 };
 
 #endif

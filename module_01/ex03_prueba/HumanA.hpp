@@ -1,5 +1,5 @@
-#ifndef HUMANB_HPP
-# define HUMANB_HPP
+#ifndef HUMANA_HPP
+# define HUMANA_HPP
 #include <iostream>
 #include <string>
 #include <iomanip>
@@ -19,15 +19,14 @@
 #define LGRAY "\033[0;37m"
 #define BOLD "\033[1;37m"
 
-class HumanB{
+class HumanA{
 private:
-	Weapon	WeaponB;
 	std::string	name;
+	Weapon 		*WeaponA;
 public:
-	HumanB(std::string	name);
-	~HumanB();
+	HumanA(std::string name, Weapon &weapon);
+	~HumanA();
 	void	attack();
-	void	setWeapon(Weapon newWeapon);
 };
 
 #endif

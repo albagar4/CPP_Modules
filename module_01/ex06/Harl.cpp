@@ -24,6 +24,10 @@ void	Harl::error(void){
 	std::cout << "... and that's how mother nature works. Goodbye little one :(" << std::endl;
 }
 
+void printLevel(std::string level) {
+	std::cout << std::endl << "[ " << level << " ]" << std::endl; 
+}
+
 void	Harl::complain(std::string level){
 	std::string	arrayStr[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	
@@ -33,10 +37,18 @@ void	Harl::complain(std::string level){
 		{
 			switch(i)
 			{
-				case 0: this->debug();
-				case 1: this->info();
-				case 2: this->warning();
-				case 3: this->error();
+				case 0:
+					printLevel(arrayStr[0]);
+					this->debug();
+				case 1:
+					printLevel(arrayStr[1]); 
+					this->info();
+				case 2:
+					printLevel(arrayStr[2]);
+					this->warning();
+				case 3:
+					printLevel(arrayStr[3]);
+					this->error();
 			}
 			return ;
 		}

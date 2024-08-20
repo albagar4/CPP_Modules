@@ -37,18 +37,10 @@ void	Harl::complain(std::string level){
 		{
 			switch(i)
 			{
-				case 0:
-					printLevel(arrayStr[0]);
-					this->debug();
-				case 1:
-					printLevel(arrayStr[1]); 
-					this->info();
-				case 2:
-					printLevel(arrayStr[2]);
-					this->warning();
-				default:
-					printLevel(arrayStr[3]);
-					this->error();
+				case 0: printLevel(arrayStr[0]); this->debug();
+				case 1: printLevel(arrayStr[1]); this->info();
+				case 2: printLevel(arrayStr[2]); this->warning();
+				default: printLevel(arrayStr[3]); this->error();
 			}
 			return ;
 		}

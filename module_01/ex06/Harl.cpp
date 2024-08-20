@@ -25,16 +25,22 @@ void	Harl::error(void){
 }
 
 void	Harl::complain(std::string level){
-	functionPointer arrayList[4] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 	std::string	arrayStr[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	
 	for (int i = 0; i < 4; i++)
 	{
 		if (arrayStr[i] == level)
 		{
-			(this->*arrayList[i])();
-			break ;
+			switch(i)
+			{
+				case 0: this->debug();
+				case 1: this->info();
+				case 2: this->warning();
+				case 3: this->error();
+			}
+			return ;
 		}
 	}
+	std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 	return ;
 }

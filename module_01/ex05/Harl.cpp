@@ -9,11 +9,11 @@ Harl::~Harl(){
 }
 
 void	Harl::debug(void){
-	std::cout << "When ducks are borned, they imprint on the first animal they see. They will consider it their mother!!" << std::endl;
+	std::cout << "When ducks are born, they imprint on the first animal they see. They will consider it their mother!!" << std::endl;
 }
 
 void	Harl::info(void){
-	std:cout << "Even if this animal was a crocodile, the little ducks would love it and follow it, even if that means they're going to die" << std::endl;
+	std::cout << "Even if this animal was a crocodile, the little ducks would love it and follow it, even if that means they're going to die" << std::endl;
 }
 
 void	Harl::warning(void){
@@ -25,9 +25,17 @@ void	Harl::error(void){
 }
 
 void	Harl::complain(std::string level){
-	if (level == DEBUG || level == INFO || level == WARNING || level == ERROR)
+	functionPointer arrayList[4] = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+	std::string	arrayStr[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	
+	for (int i = 0; i < 4; i++)
 	{
-		for ()
+		if (arrayStr[i] == level)
+		{
+			for (int j = i; j < 4; j++)
+				(this->*arrayList[j])();
+			break ;
+		}
 	}
 	return ;
 }

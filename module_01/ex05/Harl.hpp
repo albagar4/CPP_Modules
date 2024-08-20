@@ -4,7 +4,6 @@
 #include <string>
 #include <iomanip>
 #include <stdlib.h>
-#include "Weapon.hpp"
 
 #define RED    "\033[0;31m"
 #define BRED    "\033[1;31m"
@@ -21,6 +20,7 @@
 
 class Harl{
 private:
+	typedef void (Harl::*functionPointer)(void);
 	void	debug(void);
 	void	info(void);
 	void	warning(void);

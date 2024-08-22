@@ -3,29 +3,40 @@
 #include <string>
 #include <stdlib.h>
 
-void	simulateReplace(std::string filename, std::string s1, std::string s2)
+void simulateReplace(std::string filename, std::string s1, std::string s2)
 {
-	std::ifstream firstFile(filename.c_str());
-	if (!firstFile.is_open())
+    std::ifstream firstFile(filename.c_str());
+    if (!firstFile.is_open())
+    {
+        std::cout << "File not found" << std::endl;
+        return;
+    }
+
+    std::ofstream secondFile((filename + ".replace").c_str());
+	if (!secondFile)
 	{
-		std::cout << "File not found" << std::endl;
+		std::cout << "Error on the replace file" << std::endl;
 		return ;
 	}
 	
-	std::string	buffer;
-	std::ofstream secondFile((filename + ".replace").c_str());
-	while (std::getline(firstFile, buffer))
-	{
-		int	pos = buffer.find(s1);
-		if (pos != -1)
-		{
-			buffer.erase(pos, (int)s1.length());
-			buffer.insert(pos, s2);
-		}
-		secondFile << buffer << std::endl;
-	}
-	firstFile.close();
-	secondFile.close();
+    std::string line;
+    while (std::getline(firstFile, line))
+    {
+        std::string result;
+        size_t pos = 0;
+        size_t found_pos;
+        while ((line.find(s1, pos)) != std::string::npos)
+        {
+			found_pos = line.find(s1, pos);
+            result.append(line, pos, found_pos - pos);
+            result.append(s2);
+            pos = found_pos + s1.length();
+        }
+        result.append(line, pos, std::string::npos);
+        secondFile << result << std::endl;
+    }
+    firstFile.close();
+    secondFile.close();
 }
 
 int	main(int argc, char **argv)

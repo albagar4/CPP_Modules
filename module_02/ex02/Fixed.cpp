@@ -90,6 +90,32 @@ float Fixed::operator/(const Fixed& right_value){
 	return (division);
 }
 
+Fixed& Fixed::operator++(){
+	this->setRawBits(this->getRawBits() + 1);
+	return (*this);
+}
+
+Fixed Fixed::operator++(int){
+	Fixed tmp = *this;
+
+	tmp.setRawBits(tmp.getRawBits() + 1);
+	this->setRawBits(tmp.getRawBits());
+	return (tmp);
+}
+
+Fixed& Fixed::operator--(){
+	this->setRawBits(this->getRawBits() - 1);
+	return (*this);
+}
+
+Fixed Fixed::operator--(int){
+	Fixed tmp = *this;
+
+	tmp.setRawBits(tmp.getRawBits() - 1);
+	this->setRawBits(tmp.getRawBits());
+	return (tmp);
+}
+
 Fixed::~Fixed(){
 	// std::cout << "Destructor called" << std::endl;
 }
@@ -110,6 +136,30 @@ float Fixed::toFloat(void) const{
 
 int Fixed::toInt(void) const{
 	return (this->value >> this->bits);
+}
+
+Fixed& Fixed::min(Fixed& first, Fixed& second){
+	if (first.getRawBits() < second.getRawBits())
+		return (first);
+	return (second);
+}
+
+const Fixed& Fixed::min(const Fixed& first, const Fixed& second){
+	if (first.getRawBits() < second.getRawBits())
+		return (first);
+	return (second);
+}
+
+Fixed& Fixed::max(Fixed& first, Fixed& second){
+	if (first.getRawBits() > second.getRawBits())
+		return (first);
+	return (second);
+}
+
+const Fixed& Fixed::max(const Fixed& first, const Fixed& second){
+	if (first.getRawBits() > second.getRawBits())
+		return (first);
+	return (second);
 }
 
 std::ostream& operator<<(std::ostream& os, const Fixed& obj){

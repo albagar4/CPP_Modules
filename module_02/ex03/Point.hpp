@@ -30,11 +30,18 @@ public:
 	Point(const float x, const float y);
 	Point(const Point &cpy);
 	Point& operator=(const Point& right_value);
+	bool operator==(const Point& right_value) const;
+
 	~Point();
 	Fixed getX(void) const;
 	Fixed getY(void) const;
 };
 
+std::ostream& operator<<(std::ostream& os, const Point& obj);
+bool slopeCalc(Point const i, Point const j, Point const k);
+bool edgeCheck(Point const a, Point const b, Point const c, Point const point);
+float areaCalc(Point const i, Point const j, Point const z);
+float totalAreaCalc(Point const a, Point const b, Point const c, Point const point);
 bool bsp(Point const a, Point const b, Point const c, Point const point);
 
 #endif

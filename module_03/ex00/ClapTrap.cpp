@@ -1,4 +1,4 @@
-#include "./ClapTrap.hpp"
+#include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap(){
 	std::cout << CYAN << "ClapTrap: Default constructor called" << RNL;
@@ -46,4 +46,25 @@ void ClapTrap::attack(const std::string& target){
 	}
 	else
 		std::cout << this->name << " has no Energy points left" << std::endl;
+}
+
+void ClapTrap::takeDamage(unsigned int amount){
+	this->hitPoints -= amount;
+	if (this->hitPoints > 0)
+		std::cout << this->name << " has received " << amount << " points of damage, but he's still standing" << std::endl;
+	else
+		std::cout << this->name << " has received " << amount << " points of damage, and sadly he died" << std::endl; 
+}
+
+void ClapTrap::beRepaired(unsigned int amount){
+	if (this->hitPoints > 0 && this->energyPoints > 0)
+	{
+		this->hitPoints += amount;
+		this->energyPoints--;
+		std::cout << this->name << " used his magic to recover " << amount << " points of life" << std::endl;
+	}
+	else if (this->hitPoints <= 0)
+		std::cout << this->name << " is dead, he cannot use his magic :(" << std::endl;
+	else
+		std::cout << this->name << " has not enough energy points to use his magic" << std::endl;
 }

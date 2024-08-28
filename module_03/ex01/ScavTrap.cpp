@@ -2,11 +2,18 @@
 
 ScavTrap::ScavTrap(){
 	std::cout << BRED << "ScavTrap: Default constructor called" << RNL;
+	this->name = "Default";
+	this->hitPoints = 10;
+	this->energyPoints = 10;
+	this->attackDamage = 0;
 }
 
 ScavTrap::ScavTrap(std::string name){
 	std::cout << BRED << "ScavTrap: " << name << " constructor called" << RNL;
 	this->name = name;
+	this->hitPoints = 100;
+	this->energyPoints = 50;
+	this->attackDamage = 20;
 }
 
 ScavTrap::~ScavTrap(){

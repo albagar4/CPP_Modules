@@ -2,12 +2,12 @@ GREEN = \033[0;32m
 RED = \033[0;31m
 RESET = \033[0m
 
-NAME = ScavTrap
+NAME = FragTrap
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 INCLUDES = -I .
 
-SOURCES = main.cpp ClapTrap.cpp ScavTrap.cpp
+SOURCES = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
 all: $(NAME)

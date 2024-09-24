@@ -6,6 +6,7 @@
 class Dog: public Animal{
 protected:
 	std::string sound;
+	Brain		*dogBrain;
 public:
 	Dog();
 	Dog(std::string type);

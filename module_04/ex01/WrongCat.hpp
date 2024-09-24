@@ -6,6 +6,7 @@
 class WrongCat: public Animal{
 protected:
 	std::string sound;
+	Brain		*wcatBrain;
 public:
 	WrongCat();
 	WrongCat(std::string type);

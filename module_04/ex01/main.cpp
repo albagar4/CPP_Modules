@@ -6,7 +6,7 @@
 /*   By: albagar4 <albagar4@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 14:18:26 by albagar4          #+#    #+#             */
-/*   Updated: 2024/08/29 16:44:31 by albagar4         ###   ########.fr       */
+/*   Updated: 2024/09/24 17:41:09 by albagar4         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,25 @@
 #include "WrongCat.hpp"
 
 int main(void){
+	// {
+	// 	const Animal* j = new Dog();
+	// 	const Animal* i = new Cat();
+	// 	delete j;
+	// 	delete i;
+	// }
 	{
-		const Animal* meta = new Animal();
-		const Animal* j = new Dog();
-		const Animal* i = new Cat();
+		int i = 6;
+		const Animal* animalArray[i];
 
-		std::cout << j->getType() << " " << std::endl;
-		std::cout << i->getType() << " " << std::endl;
-		i->makeSound();
-		j->makeSound();
-		meta->makeSound();
-
-		delete meta;
-		delete i;
-		delete j;
-	}
-	{
-		const Dog pluto("Pluto");
-		const Cat michi("Michi");
-		const WrongCat notmichi("mIcHii");
-
-		pluto.makeSound();
-		michi.makeSound();
-		notmichi.makeSound();
+		for (int j = 0; j < i; j++)
+		{
+			if (j < i / 2)
+				animalArray[j] = new Dog();
+			else
+				animalArray[j] = new Cat();
+		}
+		for (int j = 0; j < i; j++)
+			delete animalArray[j];
 	}
 	return (0);
 }

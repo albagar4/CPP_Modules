@@ -4,6 +4,7 @@
 #include <string>
 #include <iomanip>
 #include <stdlib.h>
+#include "Brain.hpp"
 
 #define RED    "\033[0;31m"
 #define BRED    "\033[1;31m"

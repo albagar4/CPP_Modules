@@ -7,7 +7,7 @@ CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 INCLUDES = -I .
 
-SOURCES = main.cpp Animal.cpp Cat.cpp Dog.cpp WrongCat.cpp Brain.cpp
+SOURCES = main.cpp AAnimal.cpp Cat.cpp Dog.cpp WrongCat.cpp Brain.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
 all: $(NAME)

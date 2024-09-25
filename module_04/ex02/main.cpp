@@ -6,23 +6,23 @@
 /*   By: albagar4 <albagar4@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 14:18:26 by albagar4          #+#    #+#             */
-/*   Updated: 2024/09/24 18:33:56 by albagar4         ###   ########.fr       */
+/*   Updated: 2024/09/25 11:23:24 by albagar4         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
 #include "WrongCat.hpp"
 
 int main(void){
 	{
-		Animal errortest;
-		const Animal errortest1;
-		const Animal *errortest2 = new Animal();
-		const Animal *errortest3 = new WrongCat();
+		AAnimal errortest;
+		const AAnimal errortest1;
+		const AAnimal *errortest2 = new AAnimal();
+		const AAnimal *errortest3 = new WrongCat();
 		const WrongCat errortest4;
-		const Animal *goodtest = new Cat();
+		const AAnimal *goodtest = new Cat();
 
 		goodtest->makeSound();
 		delete goodtest;

@@ -1,5 +1,5 @@
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef AAnimal_HPP
+# define AAnimal_HPP
 #include <iostream>
 #include <string>
 #include <iomanip>
@@ -19,14 +19,14 @@
 #define LGRAY "\033[0;37m"
 #define BOLD "\033[1;37m"
 
-class Animal{
+class AAnimal{
 protected:
 	std::string type;
 public:
-	Animal();
-	Animal(const Animal &animal);
-	Animal &operator=(const Animal &animal);
-	virtual ~Animal();
+	AAnimal();
+	AAnimal(const AAnimal &AAnimal);
+	AAnimal &operator=(const AAnimal &AAnimal);
+	virtual ~AAnimal();
 	std::string getType(void) const;
 	void setType(std::string newType);
 	virtual void makeSound(void) const = 0;

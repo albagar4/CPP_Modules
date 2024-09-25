@@ -1,9 +1,9 @@
 #ifndef WRONGCAT_HPP
 # define WRONGCAT_HPP
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 
-class WrongCat: public Animal{
+class WrongCat: public AAnimal{
 protected:
 	std::string sound;
 	Brain		*wcatBrain;

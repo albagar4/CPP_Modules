@@ -6,7 +6,7 @@
 /*   By: albagar4 <albagar4@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 12:52:03 by albagar4          #+#    #+#             */
-/*   Updated: 2024/09/25 12:52:06 by albagar4         ###   ########.fr       */
+/*   Updated: 2024/09/26 17:01:34 by albagar4         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ Ice &Ice::operator=(const Ice &ice){
 
 AMateria* Ice::clone() const{
 	std::cout << GRAY "It appears you've clone a " << RESET;
-	AMateria *clone = new Ice;
+	AMateria *clone = new Ice();
 	return (clone);
 }
 

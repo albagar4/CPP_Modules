@@ -10,6 +10,7 @@ protected:
 	static AMateria **bin;
 public:
 	Character();
+	Character(std::string const name);
 	Character(const Character &character);
 	Character &operator=(const Character &character);
 	~Character();

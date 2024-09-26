@@ -3,6 +3,8 @@
 
 # include "AMateria.hpp"
 
+class AMateria;
+
 class ICharacter{
 protected:
 	std::string const *name;

@@ -6,7 +6,7 @@
 /*   By: albagar4 <albagar4@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 12:52:03 by albagar4          #+#    #+#             */
-/*   Updated: 2024/09/26 17:01:34 by albagar4         ###   ########.fr       */
+/*   Updated: 2024/09/26 18:52:08 by albagar4         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ Ice::~Ice(){
 	std::cout << GRAY "Ice: Destructor called" RNL;
 }
 
-Ice::Ice(const Ice &ice){
-	this->type = ice.type;
+Ice::Ice(const Ice &ice): AMateria(ice) {
 	std::cout << GRAY "Ice: Copy constructor called" RNL;
 }
 

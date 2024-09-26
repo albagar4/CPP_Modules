@@ -7,7 +7,7 @@ CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 INCLUDES = -I .
 
-SOURCES = main.cpp AMateria.cpp Cure.cpp Ice.cpp ICharacter.cpp IMaterialSource.cpp
+SOURCES = main.cpp AMateria.cpp Cure.cpp Ice.cpp ICharacter.cpp IMateriaSource.cpp Character.cpp MateriaSource.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
 all: $(NAME)

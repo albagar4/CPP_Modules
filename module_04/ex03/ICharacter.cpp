@@ -6,7 +6,7 @@
 /*   By: albagar4 <albagar4@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:05:27 by albagar4          #+#    #+#             */
-/*   Updated: 2024/09/25 15:05:30 by albagar4         ###   ########.fr       */
+/*   Updated: 2024/09/26 18:53:44 by albagar4         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,12 @@ ICharacter::~ICharacter(){
 }
 
 ICharacter::ICharacter(const ICharacter &icharacter){
+	(void)icharacter;
 	std::cout << "ICharacter: Copy constructor called" << std::endl;
 }
 
 ICharacter &ICharacter::operator=(const ICharacter &icharacter){
+	(void)icharacter;
 	std::cout << "ICharacter: Copy assignment operator called" << std::endl;
 	return (*this);
 }

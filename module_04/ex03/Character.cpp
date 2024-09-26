@@ -6,7 +6,7 @@
 /*   By: albagar4 <albagar4@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:05:33 by albagar4          #+#    #+#             */
-/*   Updated: 2024/09/26 18:26:32 by albagar4         ###   ########.fr       */
+/*   Updated: 2024/09/26 18:56:55 by albagar4         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,7 @@ Character::~Character(){
 	std::cout << "Character: Destructor called" << std::endl;
 }
 
-Character::Character(const Character &character){
-	this->size = character.size;
-	this->name = character.name;
+Character::Character(const Character &character): ICharacter(character) {
 	for (int i = 0; i < 4; i++)
 		this->slots[i] = character.slots[i];
 	std::cout << "Character: Copy constructor called" << std::endl;

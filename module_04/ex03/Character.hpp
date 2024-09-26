@@ -7,7 +7,7 @@ class Character: public ICharacter{
 protected:
 	int size;
 	AMateria *slots[4];
-	static AMateria **bin;
+	AMateria **bin;
 public:
 	Character();
 	Character(std::string const name);

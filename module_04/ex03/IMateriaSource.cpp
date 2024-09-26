@@ -6,7 +6,7 @@
 /*   By: albagar4 <albagar4@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 16:25:44 by albagar4          #+#    #+#             */
-/*   Updated: 2024/09/26 16:25:55 by albagar4         ###   ########.fr       */
+/*   Updated: 2024/09/26 18:58:54 by albagar4         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,20 @@ IMateriaSource::~IMateriaSource(){
 }
 
 IMateriaSource::IMateriaSource(const IMateriaSource &imateriasource){
+	for (int i = 0; i < 4; i++)
+	{
+		if (imateriasource.materies[i] != NULL)
+			this->materies[i] = imateriasource.materies[i];
+	}
 	std::cout << "IMateriaSource: Copy constructor called" << std::endl;
 }
 
 IMateriaSource &IMateriaSource::operator=(const IMateriaSource &imateriasource){
+	for (int i = 0; i < 4; i++)
+	{
+		if (imateriasource.materies[i] != NULL)
+			this->materies[i] = imateriasource.materies[i];
+	}
 	std::cout << "IMateriaSource: Copy assignment operator called" << std::endl;
 	return (*this);
 }

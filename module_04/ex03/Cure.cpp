@@ -6,7 +6,7 @@
 /*   By: albagar4 <albagar4@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 12:51:55 by albagar4          #+#    #+#             */
-/*   Updated: 2024/09/25 12:51:58 by albagar4         ###   ########.fr       */
+/*   Updated: 2024/09/26 18:51:50 by albagar4         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ Cure::~Cure(){
 	std::cout << GREEN "Cure: Destructor called" RNL;
 }
 
-Cure::Cure(const Cure &cure){
-	this->type = cure.type;
+Cure::Cure(const Cure &cure): AMateria(cure) {
 	std::cout << GREEN "Cure: Copy constructor called" RNL;
 }
 

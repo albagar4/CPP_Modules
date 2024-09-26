@@ -20,6 +20,8 @@
 #define LGRAY "\033[0;37m"
 #define BOLD "\033[1;37m"
 
+class ICharacter;
+
 class AMateria{
 protected:
 	std::string const *type;

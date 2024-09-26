@@ -6,7 +6,7 @@
 /*   By: albagar4 <albagar4@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 16:26:34 by albagar4          #+#    #+#             */
-/*   Updated: 2024/09/26 18:24:32 by albagar4         ###   ########.fr       */
+/*   Updated: 2024/09/26 19:08:43 by albagar4         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,6 @@
 
 MateriaSource::MateriaSource(){
 	std::cout << "MateriaSource: Default constructor called" << std::endl;
-}
-
-AMateria::AMateria(std::string const &type): AMateria(type){
-	std::cout << CYAN "MateriaSource->AMateria: " << this->getType() << " constructor called" << RNL;
 }
 
 MateriaSource::~MateriaSource(){
@@ -29,12 +25,7 @@ MateriaSource::~MateriaSource(){
 	std::cout << "MateriaSource: Destructor called" << std::endl;
 }
 
-MateriaSource::MateriaSource(const MateriaSource &materiasource){
-	for (int i = 0; i < 4; i++)
-	{
-		if (materiasource.materies[i] != NULL)
-			this->materies[i] = materiasource.materies[i];
-	}
+MateriaSource::MateriaSource(const MateriaSource &materiasource): IMateriaSource(materiasource), AMateria(materiasource){
 	std::cout << "MateriaSource: Copy constructor called" << std::endl;
 }
 
@@ -66,7 +57,8 @@ void MateriaSource::learnMateria(AMateria *materia){
 int MateriaSource::recursiveFunction(std::string const &type, int i){
 	for (int j = (i + 1); j < 4; j++)
 	{
-		if (type.compare(this->materies[j]->getType()))
+		std::cout << "buenas tardes" << std::endl;
+		if (!type.compare(this->materies[j]->getType()))
 		{
 			i = j;
 			this->recursiveFunction(type, i);
@@ -78,7 +70,8 @@ int MateriaSource::recursiveFunction(std::string const &type, int i){
 AMateria* MateriaSource::createMateria(std::string const &type){
 	for (int i = 0; i < 4; i++)
 	{
-		if (type.compare(this->materies[i]->getType()))
+		std::cout << "buenos dias" << std::endl;
+		if (!type.compare(this->materies[i]->getType()))
 		{
 			i = this->recursiveFunction(type, i);
 			AMateria *copy = new MateriaSource(*(this->materies[i]));

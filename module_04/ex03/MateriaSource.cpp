@@ -6,7 +6,7 @@
 /*   By: albagar4 <albagar4@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 16:26:34 by albagar4          #+#    #+#             */
-/*   Updated: 2024/09/26 17:08:25 by albagar4         ###   ########.fr       */
+/*   Updated: 2024/09/26 17:10:07 by albagar4         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ MateriaSource::MateriaSource(){
 	std::cout << "MateriaSource: Default constructor called" << std::endl;
 }
 
-MateriaSource::AMateria(std::string const &type): AMateria{
-	std::cout << CYAN "AMateria: " << this->getType() << " constructor called" << RNL;
+MateriaSource::AMateria(std::string const &type): AMateria(type){
+	std::cout << CYAN "MateriaSource->AMateria: " << this->getType() << " constructor called" << RNL;
 }
 
 MateriaSource::~MateriaSource(){

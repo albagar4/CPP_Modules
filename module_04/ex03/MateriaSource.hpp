@@ -12,9 +12,9 @@ class MateriaSource: public IMateriaSource, public AMateria{
 	MateriaSource &operator=(const MateriaSource &materiasource);
 	~MateriaSource();
 	void learnMateria(AMateria *materia);
+	int recursiveFunction(std::string const &type, int i);
 	AMateria* createMateria(std::string const &type);
-	AMateria* clone() const;
-	AMateria(std::string const &type);
+	MateriaSource* clone() const;
 };
 
 #endif

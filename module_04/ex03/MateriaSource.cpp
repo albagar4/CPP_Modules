@@ -6,7 +6,7 @@
 /*   By: albagar4 <albagar4@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 16:26:34 by albagar4          #+#    #+#             */
-/*   Updated: 2024/09/26 17:10:07 by albagar4         ###   ########.fr       */
+/*   Updated: 2024/09/26 18:24:32 by albagar4         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ MateriaSource::MateriaSource(){
 	std::cout << "MateriaSource: Default constructor called" << std::endl;
 }
 
-MateriaSource::AMateria(std::string const &type): AMateria(type){
+AMateria::AMateria(std::string const &type): AMateria(type){
 	std::cout << CYAN "MateriaSource->AMateria: " << this->getType() << " constructor called" << RNL;
 }
 
@@ -63,7 +63,33 @@ void MateriaSource::learnMateria(AMateria *materia){
 	}
 }
 
-AMateria* MateriaSource::clone() const{
-	std::cout << "You can't clone anything" << std::endl;
-	this->
+int MateriaSource::recursiveFunction(std::string const &type, int i){
+	for (int j = (i + 1); j < 4; j++)
+	{
+		if (type.compare(this->materies[j]->getType()))
+		{
+			i = j;
+			this->recursiveFunction(type, i);
+		}
+	}
+	return (i);
+}
+
+AMateria* MateriaSource::createMateria(std::string const &type){
+	for (int i = 0; i < 4; i++)
+	{
+		if (type.compare(this->materies[i]->getType()))
+		{
+			i = this->recursiveFunction(type, i);
+			AMateria *copy = new MateriaSource(*(this->materies[i]));
+			return (copy);
+		}
+	}
+	return (0);
+}
+
+MateriaSource* MateriaSource::clone() const{
+	std::cout << "It appears you've clone a " << std::endl;
+	MateriaSource *clone = new MateriaSource(*this);
+	return (clone);
 }

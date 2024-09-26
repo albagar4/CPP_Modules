@@ -6,7 +6,7 @@
 /*   By: albagar4 <albagar4@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:05:33 by albagar4          #+#    #+#             */
-/*   Updated: 2024/09/26 16:35:32 by albagar4         ###   ########.fr       */
+/*   Updated: 2024/09/26 18:26:32 by albagar4         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ Character &Character::operator=(const Character &character){
 	return (*this);
 }
 
-std::string const &Character::getName(){
+std::string const &Character::getName() const{
 	return (*this->name);
 }
 

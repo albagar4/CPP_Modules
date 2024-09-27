@@ -6,7 +6,7 @@
 /*   By: albagar4 <albagar4@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 16:25:44 by albagar4          #+#    #+#             */
-/*   Updated: 2024/09/27 16:48:02 by albagar4         ###   ########.fr       */
+/*   Updated: 2024/09/27 18:24:26 by albagar4         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,6 @@ IMateriaSource::IMateriaSource(){
 }
 
 IMateriaSource::~IMateriaSource(){
-	// for (int i = 0; i < 4; i++)
-	// {
-	// 	if (this->materies[i] != NULL)
-	// 		delete this->materies[i];
-	// }
 	// std::cout << "IMateriaSource: Destructor called" << std::endl;
 }
 

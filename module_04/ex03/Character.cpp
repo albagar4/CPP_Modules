@@ -6,7 +6,7 @@
 /*   By: albagar4 <albagar4@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:05:33 by albagar4          #+#    #+#             */
-/*   Updated: 2024/09/27 17:06:36 by albagar4         ###   ########.fr       */
+/*   Updated: 2024/09/27 18:24:02 by albagar4         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,13 @@ Character::Character(std::string const name){
 }
 
 Character::~Character(){
-	for (int i = 0; i < size; i++)
+	for (int i = 0; i < size - 1; i++)
 	{
-		if (i < 4 && this->slots[i] != NULL)
-			delete this->slots[i];
 		if (this->bin[i] != NULL)
 			delete this->bin[i];
 	}
-	// delete this->bin[size];
 	// std::cout << "Character: Destructor called" << std::endl;
+
 }
 
 Character::Character(const Character &character): ICharacter(character) {
@@ -57,7 +55,7 @@ std::string const &Character::getName() const{
 void Character::equip(AMateria *m){
 	for (int i = 0; i < 4; i++)
 	{
-		if (this->slots[i] == NULL)
+		if (this->slots[i] == NULL && m)
 		{
 			std::cout << this->getName() << " equips " << m->getType() << std::endl;
 			this->slots[i] = m;
@@ -71,19 +69,29 @@ void Character::unequip(int idx){
 	{
 		std::cout << this->getName() << " unequips " << this->slots[idx]->getType() << std::endl;
 		this->TrashCan(this->slots[idx]);
-		for (int i = idx; i < 4; i++)
-			this->slots[i] = this->slots[i + 1];
+		for (int i = idx; i < 3; i++)
+			if (this->slots[i + 1])
+				this->slots[i] = this->slots[i + 1];
 		this->slots[3] = NULL;
 	}
 	else
 		std::cout << "You can't unequip something that doesn't exist" << std::endl;
+	// std::cout << "Successfully passed unequip" << std::endl;
 }
 
 void Character::TrashCan(AMateria *trash){
-	// this->bin[size] = new AMateria*;
 	this->size++;
-	memset((void *)this->bin[size - 1], 0, sizeof(AMateria));
-	this->bin[size - 1] = trash;
+	AMateria **newBin = new AMateria*[this->size];
+	for (int i = 0; i < this->size - 1; i++)
+		newBin[i] = this->bin[i];
+	newBin[this->size - 1] = trash;
+	for (int i = 0; i < this->size - 1; i++)
+	{
+		if (this->bin[i] != NULL)
+			delete this->bin[i];
+	}
+	this->bin = newBin;
+	delete [] newBin;
 }
 
 void Character::use(int idx, ICharacter &target){

@@ -6,7 +6,7 @@
 /*   By: albagar4 <albagar4@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 16:26:34 by albagar4          #+#    #+#             */
-/*   Updated: 2024/09/27 17:10:47 by albagar4         ###   ########.fr       */
+/*   Updated: 2024/09/27 18:20:48 by albagar4         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void MateriaSource::learnMateria(AMateria *materia){
 			return ;
 		}
 	}
+	delete materia;
 	std::cout << "Your MateriaSource doesn't have space left for learning" << std::endl;
 }
 

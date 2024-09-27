@@ -6,7 +6,7 @@
 /*   By: albagar4 <albagar4@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:20:25 by albagar4          #+#    #+#             */
-/*   Updated: 2024/09/27 17:13:35 by albagar4         ###   ########.fr       */
+/*   Updated: 2024/09/27 18:22:54 by albagar4         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,29 @@
 
 int main()
 {
-	{
-		IMateriaSource *src = new MateriaSource();
-		for (int i = 0; i < 2; i++)
-		{
-			src->learnMateria(new Ice());
-			src->learnMateria(new Cure());
-		}
-	}
+	// {
+	// 	IMateriaSource *src = new MateriaSource();
+	// 	for (int i = 0; i < 3; i++)
+	// 	{
+	// 		src->learnMateria(new Ice());
+	// 		src->learnMateria(new Cure());
+	// 	}
+
+	// 	AMateria *wpn1 = src->createMateria("ice");
+	// 	AMateria *wpn2 = src->createMateria("cure");
+	// 	AMateria *wpn3 = src->createMateria("nutella");
+
+	// 	ICharacter *me = new Character("me");
+	// 	me->equip(wpn1);
+	// 	me->equip(wpn2);
+	// 	me->equip(wpn3);
+	// 	me->unequip(1);
+	// 	me->unequip(3);
+
+	// 	delete src;
+	// 	delete me;
+	// 	return (0);
+	// }
 	{
 		IMateriaSource* src = new MateriaSource();
 		src->learnMateria(new Ice());

@@ -6,7 +6,7 @@
 /*   By: albagar4 <albagar4@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:05:33 by albagar4          #+#    #+#             */
-/*   Updated: 2024/09/27 17:04:49 by albagar4         ###   ########.fr       */
+/*   Updated: 2024/09/27 17:06:36 by albagar4         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void Character::equip(AMateria *m){
 	{
 		if (this->slots[i] == NULL)
 		{
+			std::cout << this->getName() << " equips " << m->getType() << std::endl;
 			this->slots[i] = m;
 			return ;
 		}
@@ -68,7 +69,7 @@ void Character::equip(AMateria *m){
 void Character::unequip(int idx){
 	if (this->slots[idx] != NULL && (idx >= 0 && idx <= 3))
 	{
-		std::cout << "You unequip " << this->slots[idx]->getType() << std::endl;
+		std::cout << this->getName() << " unequips " << this->slots[idx]->getType() << std::endl;
 		this->TrashCan(this->slots[idx]);
 		for (int i = idx; i < 4; i++)
 			this->slots[i] = this->slots[i + 1];

@@ -6,7 +6,7 @@
 /*   By: albagar4 <albagar4@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 17:02:30 by albagar4          #+#    #+#             */
-/*   Updated: 2024/09/24 16:49:38 by albagar4         ###   ########.fr       */
+/*   Updated: 2024/09/27 17:27:09 by albagar4         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,9 @@ Brain &Brain::operator=(const Brain &brain){
 		this->ideas[i] = brain.ideas[i];
 	std::cout << YELLOW << "Brain: Copy assignment operator called" << RNL;
 	return (*this);
+}
+
+Brain *Brain::clone(void){
+	Brain *clone = new Brain(*this);
+	return (clone);
 }

@@ -6,7 +6,7 @@
 /*   By: albagar4 <albagar4@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 14:18:26 by albagar4          #+#    #+#             */
-/*   Updated: 2024/09/24 17:41:09 by albagar4         ###   ########.fr       */
+/*   Updated: 2024/09/27 17:28:55 by albagar4         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,25 @@ int main(void){
 	// 	delete j;
 	// 	delete i;
 	// }
-	{
-		int i = 6;
-		const Animal* animalArray[i];
+	// {
+	// 	int i = 6;
+	// 	const Animal* animalArray[i];
 
-		for (int j = 0; j < i; j++)
+	// 	for (int j = 0; j < i; j++)
+	// 	{
+	// 		if (j < i / 2)
+	// 			animalArray[j] = new Dog();
+	// 		else
+	// 			animalArray[j] = new Cat();
+	// 	}
+	// 	for (int j = 0; j < i; j++)
+	// 		delete animalArray[j];
+	// }
+	{
+		Dog first;
 		{
-			if (j < i / 2)
-				animalArray[j] = new Dog();
-			else
-				animalArray[j] = new Cat();
+			Dog second = first;
 		}
-		for (int j = 0; j < i; j++)
-			delete animalArray[j];
 	}
 	return (0);
 }

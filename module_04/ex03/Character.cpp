@@ -6,7 +6,7 @@
 /*   By: albagar4 <albagar4@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 15:05:33 by albagar4          #+#    #+#             */
-/*   Updated: 2024/09/26 18:56:55 by albagar4         ###   ########.fr       */
+/*   Updated: 2024/09/27 17:04:49 by albagar4         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 Character::Character(){
 	size = 0;
-	std::cout << "Character: Default constructor called" << std::endl;
+	// std::cout << "Character: Default constructor called" << std::endl;
 }
 
 Character::Character(std::string const name){
 	size = 0;
 	this->name = &name;
-	std::cout << "Character: " << this->getName() << " constructor called" << std::endl;
+	// std::cout << "Character: " << this->getName() << " constructor called" << std::endl;
 }
 
 Character::~Character(){
@@ -28,15 +28,17 @@ Character::~Character(){
 	{
 		if (i < 4 && this->slots[i] != NULL)
 			delete this->slots[i];
-		delete this->bin[i];
+		if (this->bin[i] != NULL)
+			delete this->bin[i];
 	}
-	std::cout << "Character: Destructor called" << std::endl;
+	// delete this->bin[size];
+	// std::cout << "Character: Destructor called" << std::endl;
 }
 
 Character::Character(const Character &character): ICharacter(character) {
 	for (int i = 0; i < 4; i++)
 		this->slots[i] = character.slots[i];
-	std::cout << "Character: Copy constructor called" << std::endl;
+	// std::cout << "Character: Copy constructor called" << std::endl;
 }
 
 Character &Character::operator=(const Character &character){
@@ -44,7 +46,7 @@ Character &Character::operator=(const Character &character){
 	this->name = character.name;
 	for (int i = 0; i < 4; i++)
 		this->slots[i] = character.slots[i];
-	std::cout << "Character: Copy assignment operator called" << std::endl;
+	// std::cout << "Character: Copy assignment operator called" << std::endl;
 	return (*this);
 }
 
@@ -56,13 +58,17 @@ void Character::equip(AMateria *m){
 	for (int i = 0; i < 4; i++)
 	{
 		if (this->slots[i] == NULL)
+		{
 			this->slots[i] = m;
+			return ;
+		}
 	}
 }
 
 void Character::unequip(int idx){
 	if (this->slots[idx] != NULL && (idx >= 0 && idx <= 3))
 	{
+		std::cout << "You unequip " << this->slots[idx]->getType() << std::endl;
 		this->TrashCan(this->slots[idx]);
 		for (int i = idx; i < 4; i++)
 			this->slots[i] = this->slots[i + 1];
@@ -73,8 +79,9 @@ void Character::unequip(int idx){
 }
 
 void Character::TrashCan(AMateria *trash){
+	// this->bin[size] = new AMateria*;
 	this->size++;
-	this->bin = new AMateria*[size];
+	memset((void *)this->bin[size - 1], 0, sizeof(AMateria));
 	this->bin[size - 1] = trash;
 }
 

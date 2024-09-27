@@ -6,7 +6,7 @@
 /*   By: albagar4 <albagar4@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 18:20:25 by albagar4          #+#    #+#             */
-/*   Updated: 2024/09/26 19:06:40 by albagar4         ###   ########.fr       */
+/*   Updated: 2024/09/27 16:37:13 by albagar4         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int main()
 
 	AMateria* tmp;
 	tmp = src->createMateria("ice");
-	std::cout << "AQUI" << std::endl;
 	me->equip(tmp);
 	tmp = src->createMateria("cure");
 	me->equip(tmp);

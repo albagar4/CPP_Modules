@@ -5,6 +5,7 @@
 #include <string.h>
 #include <iomanip>
 #include <stdlib.h>
+#include <stdio.h>
 #include "ICharacter.hpp"
 
 #define RED    "\033[0;31m"
@@ -24,7 +25,7 @@ class ICharacter;
 
 class AMateria{
 protected:
-	std::string const *type;
+	std::string type;
 public:
 	AMateria();
 	AMateria(std::string const &type);

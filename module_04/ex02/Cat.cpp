@@ -6,7 +6,7 @@
 /*   By: albagar4 <albagar4@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 14:48:48 by albagar4          #+#    #+#             */
-/*   Updated: 2024/09/24 17:27:07 by albagar4         ###   ########.fr       */
+/*   Updated: 2024/10/01 15:36:19 by albagar4         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ Cat::Cat(const Cat &cat){
 	std::cout << "Cat: Copy constructor called" << std::endl;
 	this->type = cat.type;
 	this->sound = cat.sound;
-	this->catBrain = cat.catBrain;
+	this->catBrain = cat.catBrain->clone();
 }
 
 Cat &Cat::operator=(const Cat &cat)
@@ -43,7 +43,7 @@ Cat &Cat::operator=(const Cat &cat)
 	std::cout << "Cat: Copy assignment operator called" << std::endl;
 	this->type = cat.type;
 	this->sound = cat.sound;
-	this->catBrain = cat.catBrain;
+	this->catBrain = cat.catBrain->clone();
 	return (*this);
 }
 

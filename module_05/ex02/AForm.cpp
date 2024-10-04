@@ -4,7 +4,7 @@ AForm::AForm(): name("Default AForm"), sign(false), signGrade(80), execGrade(120
 	// std::cout << "AForm: Default constructor called" << std::endl;
 }
 
-AForm::AForm(std::string name, int signGrade): name(name), sign(false), signGrade(150), execGrade(120){
+AForm::AForm(std::string name, int signGrade, int execGrade): name(name), sign(false), signGrade(signGrade), execGrade(execGrade){
 	// std::cout << "AForm: " << name << " constructor called" << std::endl;
 	try{
 		if (signGrade < 1)
@@ -51,6 +51,22 @@ int AForm::getSignGrade() const{
 int AForm::getExecGrade() const{
 	return (this->execGrade);
 }
+
+// void AForm::setName(std::string newName){
+// 	const_cast<std::string&>(this->name) = newName;
+// }
+
+void AForm::setSign(bool sign){
+	this->sign = sign;
+}
+
+// void AForm::setSignGrade(int newSignGrade){
+// 	const_cast<int&>(this->signGrade) = newSignGrade;
+// }
+
+// void AForm::setExecGrade(int newExecGrade){
+// 	const_cast<int&>(this->execGrade) = newExecGrade;
+// }
 
 void AForm::beSigned(Bureaucrat &bureaucrat){
 	try{

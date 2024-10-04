@@ -6,7 +6,6 @@
 class RobotomyRequestForm: public AForm{
 private:
 	std::string target;
-	bool		robotomized;
 public:
 	RobotomyRequestForm();
 	RobotomyRequestForm(std::string target);
@@ -14,8 +13,6 @@ public:
 	RobotomyRequestForm &operator=(const RobotomyRequestForm &robotomyrequestform);
 	~RobotomyRequestForm();
 	std::string getTarget(void) const;
-	bool getRobotomized(void) const;
-	void setRobotomized(bool robotomized);
 	void execute(Bureaucrat const & executor) const;
 	class FormNotSigned: public std::exception{
 		const char *what() const throw();

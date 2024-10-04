@@ -4,14 +4,12 @@ RobotomyRequestForm::RobotomyRequestForm(): AForm("Robotomy", 72, 45){
 	// std::cout << "RobotomyRequestForm: Default constructor called" << std::endl;
 	this->setSign(false);
 	this->target = "Default";
-	this->robotomized = false;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target): AForm("Robotomy", 72, 45){
 	// std::cout << "RobotomyRequestForm: Parameterized constructor called" << std::endl;
 	this->setSign(false);
 	this->target = target;
-	this->robotomized = false;
 }
 
 RobotomyRequestForm::~RobotomyRequestForm(){
@@ -22,7 +20,6 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &robotomyrequ
 	// std::cout << "RobotomyRequestForm: Copy constructor called" << std::endl;
 	this->setSign(robotomyrequestform.getSign());
 	this->target = robotomyrequestform.target;
-	this->robotomized = robotomyrequestform.robotomized;
 }
 
 RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &robotomyrequestform){
@@ -31,7 +28,6 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &r
 	{
 		AForm::operator=(robotomyrequestform);
 		this->target = robotomyrequestform.target;
-		this->robotomized = robotomyrequestform.robotomized;
 	}
 	return (*this);
 }
@@ -40,27 +36,15 @@ std::string RobotomyRequestForm::getTarget(void) const{
 	return (this->target);
 }
 
-bool RobotomyRequestForm::getRobotomized(void) const{
-	return (this->robotomized);
-}
-
-void RobotomyRequestForm::setRobotomized(bool robotomized){
-	this->robotomized = robotomized;
-}
-
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const{
 	try{
 		if (this->getSign() == true && executor.getGrade() <= this->getExecGrade())
 		{
-			if (this->getRobotomized() == true)
-			{
+			if (time(NULL) % 2) {
 				std::cout << this->getTarget() << " has been robotized" << std::endl;
-				this->setRobotomized(false);
-			}
-			else
-			{
+			} 
+			else {
 				std::cout <<this->getTarget() << " couldn't be robotomized" << std::endl;
-				this->setRobotomized(true);
 			}
 		}
 		else if (this->getSign() == false)
@@ -71,4 +55,8 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const{
 	catch (std::exception &e){
 		std::cout << e.what() << std::endl;
 	}
+}
+
+const char *RobotomyRequestForm::FormNotSigned::what() const throw(){
+	return ("The form you're trying to execute is not signed");
 }

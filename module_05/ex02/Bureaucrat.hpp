@@ -4,7 +4,7 @@
 #include <string>
 #include <iomanip>
 #include <stdlib.h>
-#include "Form.hpp"
+#include "AForm.hpp"
 
 #define RED    "\033[0;31m"
 #define BRED    "\033[1;31m"
@@ -19,7 +19,7 @@
 #define LGRAY "\033[0;37m"
 #define BOLD "\033[1;37m"
 
-class Form;
+class AForm;
 
 class Bureaucrat{
 private:
@@ -35,7 +35,7 @@ public:
 	int getGrade() const;
 	void incrementGrade(unsigned int nbr);
 	void decrementGrade(unsigned int nbr);
-	void signForm(Form &form);
+	void signForm(AForm &aform);
 	class GradeTooHighException: public std::exception{
 		const char *what() const throw();
 	};

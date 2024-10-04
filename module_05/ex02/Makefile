@@ -7,7 +7,7 @@ CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 INCLUDES = -I .
 
-SOURCES = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
+SOURCES = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
 all: $(NAME)

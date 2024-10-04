@@ -1,7 +1,5 @@
 #include "./ShrubberyCreationForm.hpp"
 
-//Add exceptions to the setters functions of AForm
-
 ShrubberyCreationForm::ShrubberyCreationForm(): AForm("Shrubbery", 147, 137){
 	// std::cout << "ShrubberyCreationForm: Default constructor called" << std::endl;
 	this->setSign(false);
@@ -25,11 +23,16 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &shrubb
 }
 
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &shrubberycreationform){
-	ShrubberyCreationForm *copy = new ShrubberyCreationForm(shrubberycreationform);
-	*this = *copy;
-	std::cout << "ShrubberyCreationForm: Copy assignment operator called" << std::endl;
-	std::cout << this << std::endl; 
+	if (this != &shrubberycreationform)
+	{
+		AForm::operator=(shrubberycreationform);
+		this->target = shrubberycreationform.target;
+	}
 	return (*this);
+}
+
+std::string ShrubberyCreationForm::getTarget(void) const{
+	return (this->target);
 }
 
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const{
@@ -42,7 +45,23 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const{
 				std::cout << "Error on creating file" << std::endl;
 				return ;
 			}
-			paintTree(formFile);
+			if (formFile.is_open()) {
+				formFile << "        *" << std::endl;
+				formFile << "       ***" << std::endl;
+				formFile << "      *****" << std::endl;
+				formFile << "     *******" << std::endl;
+				formFile << "    *********" << std::endl;
+				formFile << "   ***********" << std::endl;
+				formFile << "  *************" << std::endl;
+				formFile << " ***************" << std::endl;
+				formFile << "*****************" << std::endl;
+				formFile << "       |||" << std::endl;
+				formFile << "       |||" << std::endl;
+
+				formFile.close();
+			} 
+			else 
+				std::cout << "No se pudo abrir el archivo." << std::endl;
 			std::cout << executor.getName() << " executed " << this->getName() << std::endl;
 		}
 		else if (this->getSign() == false)
@@ -53,26 +72,6 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const{
 	catch (std::exception &e){
 		std::cout << BRED << e.what() << RNL;
 	}
-}
-
-void paintTree(std::ofstream formFile){
-if (formFile.is_open()) {
-	formFile << "        *" << std::endl;
-	formFile << "       ***" << std::endl;
-	formFile << "      *****" << std::endl;
-	formFile << "     *******" << std::endl;
-	formFile << "    *********" << std::endl;
-	formFile << "   ***********" << std::endl;
-	formFile << "  *************" << std::endl;
-	formFile << " ***************" << std::endl;
-	formFile << "*****************" << std::endl;
-	formFile << "       |||" << std::endl;
-	formFile << "       |||" << std::endl;
-
-	formFile.close();
-} 
-else 
-	std::cout << "No se pudo abrir el archivo." << std::endl;
 }
 
 const char *ShrubberyCreationForm::FormNotSigned::what() const throw(){

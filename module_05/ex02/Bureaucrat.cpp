@@ -6,7 +6,7 @@
 /*   By: albagar4 <albagar4@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 18:35:30 by albagar4          #+#    #+#             */
-/*   Updated: 2024/10/03 15:56:21 by albagar4         ###   ########.fr       */
+/*   Updated: 2024/10/04 15:16:32 by albagar4         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,17 +88,17 @@ void Bureaucrat::decrementGrade(unsigned int nbr){
 	}
 }
 
-void Bureaucrat::signForm(Form &form){
-	if (form.getSign() == false)
+void Bureaucrat::signForm(AForm &aForm){
+	if (aForm.getSign() == false)
 	{
-		form.beSigned(*this);
-		if (form.getSign() == true)
-			std::cout << this->getName() << " signed " << form.getName() << std::endl;
+		aForm.beSigned(*this);
+		if (aForm.getSign() == true)
+			std::cout << this->getName() << " signed " << aForm.getName() << std::endl;
 		else
-			std::cout << this->getName() << " couldn't sign " << form.getName() << " because of the previous reason" << std::endl;
+			std::cout << this->getName() << " couldn't sign " << aForm.getName() << " because of the previous reason" << std::endl;
 	}
 	else
-		std::cout << form.getName() << " is already signed" << std::endl;
+		std::cout << aForm.getName() << " is already signed" << std::endl;
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw(){

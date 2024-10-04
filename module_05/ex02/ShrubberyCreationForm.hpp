@@ -31,12 +31,12 @@ public:
 	ShrubberyCreationForm(const ShrubberyCreationForm &shrubberycreationform);
 	ShrubberyCreationForm &operator=(const ShrubberyCreationForm &shrubberycreationform);
 	~ShrubberyCreationForm();
+	std::string getTarget(void) const;
 	void execute(Bureaucrat const & executor) const;
 	class FormNotSigned: public std::exception{
 		const char *what() const throw();
 	};
 };
 
-void paintTree(std::ofstream formFile);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: albagar4 <albagar4@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 18:35:38 by albagar4          #+#    #+#             */
-/*   Updated: 2024/10/07 13:03:33 by albagar4         ###   ########.fr       */
+/*   Updated: 2024/10/07 14:32:04 by albagar4         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,12 @@ int main(void){
 	{
 	Intern someRandomIntern;
 	AForm* rrf;
-	rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+	Bureaucrat bury("Steve", 1);
+	
+	rrf = someRandomIntern.makeForm("shrubbery creation", "Bender");
+	std::cout << rrf->getName() << std::endl;
+	bury.signForm(*rrf);
+	bury.executeForm(*rrf);
 	}
 	return (0);
 }

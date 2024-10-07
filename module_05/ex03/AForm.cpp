@@ -1,11 +1,11 @@
 #include "./AForm.hpp"
 
 AForm::AForm(): name("Default AForm"), sign(false), signGrade(80), execGrade(120){
-	std::cout << "AForm: Default constructor called" << std::endl;
+	// std::cout << "AForm: Default constructor called" << std::endl;
 }
 
 AForm::AForm(std::string name, int signGrade, int execGrade): name(name), sign(false), signGrade(signGrade), execGrade(execGrade){
-	std::cout << "AForm: " << name << " constructor called" << std::endl;
+	// std::cout << "AForm: " << name << " constructor called" << std::endl;
 	try{
 		if (signGrade < 1)
 			throw GradeTooHighException();

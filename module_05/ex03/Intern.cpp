@@ -33,7 +33,7 @@ AForm *Intern::makeForm(std::string formName, std::string target){
 		{
 			AForm *form = arrayList[i];
 			std::cout << "Intern creates " << form->getName() << std::endl;
-			for (int j = i++; j < 3; j++)
+			for (int j = i + 1; j < 3; j++)
 				delete arrayList[j];
 			return (form);
 		}

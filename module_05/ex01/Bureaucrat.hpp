@@ -33,8 +33,8 @@ public:
 	~Bureaucrat();
 	std::string getName() const;
 	int getGrade() const;
-	void incrementGrade(unsigned int nbr);
-	void decrementGrade(unsigned int nbr);
+	void incrementGrade(void);
+	void decrementGrade(void);
 	void signForm(Form &form);
 	class GradeTooHighException: public std::exception{
 		const char *what() const throw();

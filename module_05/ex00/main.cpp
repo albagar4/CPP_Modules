@@ -6,7 +6,7 @@
 /*   By: albagar4 <albagar4@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 18:35:38 by albagar4          #+#    #+#             */
-/*   Updated: 2024/10/03 12:48:50 by albagar4         ###   ########.fr       */
+/*   Updated: 2024/10/07 15:05:44 by albagar4         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@ int main(void){
 
 	std::cout << error << std::endl;
 	std::cout << test << std::endl;
-	test.decrementGrade(30);
+	test.incrementGrade();
 	std::cout << test << std::endl;
-	test.decrementGrade(150);
+	test.decrementGrade();
 	std::cout << test << std::endl;
-	test.incrementGrade(120);
+	test.decrementGrade();
+	std::cout << test << std::endl;
+	test.incrementGrade();
 	std::cout << test << std::endl;
 	return (0);
 }

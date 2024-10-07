@@ -6,7 +6,7 @@
 /*   By: albagar4 <albagar4@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 18:35:30 by albagar4          #+#    #+#             */
-/*   Updated: 2024/10/07 12:19:37 by albagar4         ###   ########.fr       */
+/*   Updated: 2024/10/07 15:04:59 by albagar4         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,12 @@ int Bureaucrat::getGrade() const{
 	return (this->grade);
 }
 
-void Bureaucrat::incrementGrade(unsigned int nbr){
+void Bureaucrat::incrementGrade(void){
 	try{
-		std::cout << "Grade before: " << this->grade << std::endl;
-		if (this->grade - (int)nbr < 1)
+		if (this->grade - 1 < 1)
 			throw GradeTooHighException();
 		else
-			this->grade -= nbr;
+			this->grade--;
 		std::cout << "Grade after: " << this->grade << std::endl;
 	}
 	catch (std::exception &e){
@@ -76,12 +75,12 @@ void Bureaucrat::incrementGrade(unsigned int nbr){
 	}
 }
 
-void Bureaucrat::decrementGrade(unsigned int nbr){
+void Bureaucrat::decrementGrade(void){
 	try{
-		if (this->grade + nbr > 150)
+		if (this->grade + 1 > 150)
 			throw GradeTooLowException();
 		else
-			this->grade += nbr;
+			this->grade++;
 	}
 	catch (std::exception &e){
 		std::cout << BRED << e.what() << RNL;

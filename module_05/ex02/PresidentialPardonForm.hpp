@@ -19,11 +19,4 @@ public:
 	};
 };
 
-// Álvaro Vega (bicioso):
-// - Que respiren (obligtorio)
-// - Que les guste el rol
-// - Morena (preferencia)
-// - Culos sobre tetas (mommy issues)
-// - Que te acaricie la coletita (no mientras duermes)
-
 #endif

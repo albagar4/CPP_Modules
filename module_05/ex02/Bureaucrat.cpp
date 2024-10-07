@@ -6,7 +6,7 @@
 /*   By: albagar4 <albagar4@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 18:35:30 by albagar4          #+#    #+#             */
-/*   Updated: 2024/10/04 15:16:32 by albagar4         ###   ########.fr       */
+/*   Updated: 2024/10/07 12:19:37 by albagar4         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,14 @@ void Bureaucrat::signForm(AForm &aForm){
 	}
 	else
 		std::cout << aForm.getName() << " is already signed" << std::endl;
+}
+
+void Bureaucrat::executeForm(AForm &aForm){
+	aForm.execute(*this);
+	if (aForm.getSign() == true && this->getGrade() <= aForm.getExecGrade())
+		std::cout << this->getName() << " executed " << aForm.getName() << std::endl;
+	else
+		std::cout << this->getName() << " couldn't execute " << aForm.getName() << std::endl;
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw(){

@@ -81,11 +81,11 @@ void AForm::beSigned(Bureaucrat &bureaucrat){
 }
 
 const char *AForm::GradeTooHighException::what() const throw(){
-	return ("The grade you're trying to assign is too high");
+	return ("The grade of the bureaucrat is too high");
 }
 
 const char *AForm::GradeTooLowException::what() const throw(){
-	return ("The grade you're trying to assign is too low");
+	return ("The grade of the bureaucrat is too low");
 }
 
 std::ostream& operator<<(std::ostream& os, const AForm& obj){

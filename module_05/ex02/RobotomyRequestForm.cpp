@@ -53,7 +53,7 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const{
 			throw GradeTooLowException();
 	}
 	catch (std::exception &e){
-		std::cout << e.what() << std::endl;
+		std::cout << BRED << e.what() << RNL;
 	}
 }
 

@@ -35,7 +35,8 @@ public:
 	int getGrade() const;
 	void incrementGrade(unsigned int nbr);
 	void decrementGrade(unsigned int nbr);
-	void signForm(AForm &aform);
+	void signForm(AForm &aForm);
+	void executeForm(AForm &aForm);
 	class GradeTooHighException: public std::exception{
 		const char *what() const throw();
 	};

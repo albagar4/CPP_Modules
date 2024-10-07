@@ -61,8 +61,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const &executor) const{
 				formFile.close();
 			} 
 			else 
-				std::cout << "No se pudo abrir el archivo." << std::endl;
-			std::cout << executor.getName() << " executed " << this->getName() << std::endl;
+				std::cout << "The file couldn't be opened" << std::endl;
 		}
 		else if (this->getSign() == false)
 			throw FormNotSigned();

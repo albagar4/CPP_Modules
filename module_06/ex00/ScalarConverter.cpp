@@ -37,9 +37,12 @@ bool ft_is_int(std::string param){
 		{
 			if (param[j] == '.')
 			{
-				for 
+				for (int k = j + 1; k < (int)param.length(); k++)
+					if (param[k] != '0')
+						return (false);
 			}
-			return (false);
+			else
+				return (false);
 		}
 	}
 
@@ -83,9 +86,6 @@ bool ft_is_double(std::string param){
 		else if (!isdigit(param[j]))
 			return (false);
 	}
-
-	if (dot == 0)
-		return (false);
 	return (true);
 }
 
@@ -135,19 +135,26 @@ void convert_to_double(std::string param){
 		std::cout << "char: '" << static_cast<char>(a) << "'" << std::endl;
 	else
 		std::cout << "char: " << "Non displayable" << std::endl;
-	std::cout << "int: " << static_cast<int>(a) << std::endl;
-	std::cout << "float: " << static_cast<float>(a) << "f" << std::endl;
+	if (a >= INT32_MIN && a <= INT32_MAX)
+		std::cout << "int: " << static_cast<int>(a) << std::endl << "float: " << static_cast<float>(a) << "f" << std::endl;
+	else
+		std::cout << "int: Out of limits" << std::endl << "float: Out of limits" << std::endl;
 	std::cout << "double: " << a << std::endl;
 	return ;
 }
 
 void print_error(std::string param){
-	if (param.compare("nan") || param.compare("nanf"))
+	if (param == "nan" || param == "nanf" || param == "-inf"
+		|| param == "+inf" || param == "-inff" || param == "+inff")
 	{
 		std::cout << "char: Impossible" << std::endl;
 		std::cout << "int: Impossible" << std::endl;
-		std::cout << "float: nanf" << std::endl;
-		std::cout << "double: nan" << std::endl;
+		if (param == "-inf" || param == "-inff")
+			std::cout << "float: -inff" << std::endl << "double: -inf" << std::endl;
+		else if (param == "+inf" || param == "+inff")
+			std::cout << "float: +inff" << std::endl << "double: +inf" << std::endl;
+		else
+			std::cout << "float: nanf" << std::endl << "double: nan" << std::endl;
 	}
 	else
 	{

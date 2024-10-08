@@ -7,7 +7,7 @@ CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 INCLUDES = -I .
 
-SOURCES = main.cpp auxiliarFunctions.cpp ScalarConverter.cpp
+SOURCES = main.cpp ScalarConverter.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
 all: $(NAME)

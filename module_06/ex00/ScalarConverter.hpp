@@ -23,11 +23,12 @@
 #define BOLD "\033[1;37m"
 
 class ScalarConverter{
-public:
+private:
 	ScalarConverter();
 	ScalarConverter(const ScalarConverter &scalarconverter);
 	ScalarConverter &operator=(const ScalarConverter &scalarconverter);
 	~ScalarConverter();
+public:
 	static void convert(std::string param);
 };
 

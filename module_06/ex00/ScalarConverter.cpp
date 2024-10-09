@@ -57,8 +57,6 @@ bool ft_is_float(std::string param){
 
 	if (param[0] == '-' || param[0] == '+')
 		i = 1;
-	if (param[i] == '.')
-		return (false);
 	for (int j = i; j < (int)param.length(); j++)
 	{
 		if (param[j] == '.' && dot == 0)
@@ -81,8 +79,6 @@ bool ft_is_double(std::string param){
 
 	if (param[0] == '-' || param[0] == '+')
 		i = 1;
-	if (param[i] == '.')
-		return (false);
 	for (int j = i; j < (int)param.length(); j++)
 	{
 		if (param[j] == '.' && dot == 0)

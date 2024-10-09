@@ -63,8 +63,12 @@ bool ft_is_float(std::string param){
 	{
 		if (param[j] == '.' && dot == 0)
 			dot = 1;
-		else if (!isdigit(param[j]) || param[param.length() - 1] != 'f')
+		else if (!isdigit(param[j]))
+		{
+			if (j == (int)param.length() - 1 && param[j] == 'f')
+				return (true);
 			return (false);
+		}
 	}
 
 	int64_t result = strtol(param.c_str(), &endptr, 10);
@@ -97,8 +101,8 @@ void convert_to_char(std::string param){
 	else
 		std::cout << "char: " << "Non displayable" << std::endl;
 	std::cout << "int: " << static_cast<int>(a) << std::endl;
-	std::cout << "float: " << static_cast<float>(a) << "f" << std::endl;
-	std::cout << "double: " << static_cast<double>(a) << std::endl;
+	std::cout << "float: " << static_cast<float>(a) << ".0f" << std::endl;
+	std::cout << "double: " << static_cast<double>(a) << ".0" << std::endl;
 	return ;
 }
 
@@ -123,13 +127,22 @@ void convert_to_float(std::string param){
 	else
 		std::cout << "char: " << "Non displayable" << std::endl;
 	std::cout << "int: " << static_cast<int>(a) << std::endl;
-	std::cout << "float: " << a << "f" << std::endl;
-	std::cout << "double: " << static_cast<double>(a) << std::endl;
+	if (a == (int)a)
+	{
+		std::cout << "float: " << a << ".0f" << std::endl;
+		std::cout << "double: " << static_cast<double>(a) << ".0" << std::endl;
+	}
+	else
+	{
+		std::cout << "float: " << a << "f" << std::endl;
+		std::cout << "double: " << static_cast<double>(a) << std::endl;
+	}
 	return ;
 }
 
 void convert_to_double(std::string param){
 	double a = std::atof(param.c_str());
+	std::cout << "Puto float: " << a << std::endl;
 
 	if (a >= 32 && a <= 126)
 		std::cout << "char: '" << static_cast<char>(a) << "'" << std::endl;
@@ -168,6 +181,7 @@ void print_error(std::string param){
 void ScalarConverter::convert(std::string param){
 	pointerChecker boolArray[4] = {&ft_is_char, &ft_is_int, &ft_is_float, &ft_is_double};
 	pointerConverter convertArray[4] = {&convert_to_char, &convert_to_int, &convert_to_float, &convert_to_double};
+	std::cout.precision(10);
 
 	for (int i = 0; i < 4; i++)
 	{

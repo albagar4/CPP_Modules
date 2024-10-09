@@ -6,7 +6,7 @@
 /*   By: albagar4 <albagar4@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 18:35:38 by albagar4          #+#    #+#             */
-/*   Updated: 2024/10/07 15:17:59 by albagar4         ###   ########.fr       */
+/*   Updated: 2024/10/07 15:45:22 by albagar4         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int main(void){
 	AForm* rrf;
 	Bureaucrat bury("Steve", 1);
 	
-	rrf = someRandomIntern.makeForm("president request", "Bender");
+	rrf = someRandomIntern.makeForm("shrubbery creation", "Bender");
 	if (rrf)
 	{
 		std::cout << rrf->getName() << std::endl;

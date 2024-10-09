@@ -142,7 +142,6 @@ void convert_to_float(std::string param){
 
 void convert_to_double(std::string param){
 	double a = std::atof(param.c_str());
-	std::cout << "Puto float: " << a << std::endl;
 
 	if (a >= 32 && a <= 126)
 		std::cout << "char: '" << static_cast<char>(a) << "'" << std::endl;

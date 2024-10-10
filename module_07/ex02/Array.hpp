@@ -25,7 +25,17 @@
 template <typename T>
 class Array {
 private:
+	T *array;
 public:
+	Array();
+	Array(unsigned int n);
+	Array(const Array &array);
+	Array &operator=(const Array &array);
+	~Array();
+	int size() const;
+	T &operator[](int index) const;
 };
+
+#include "Array.tpp"
 
 #endif

@@ -26,7 +26,7 @@ template <class T>
 class Array {
 private:
 	T *array;
-	int arraySize;
+	unsigned int arraySize;
 public:
 	Array();
 	Array(unsigned int n);
@@ -42,7 +42,7 @@ public:
 
 template <class T>
 Array<T>::Array() {
-	this->array = NULL;
+	this->array = new T[0];
 	this->arraySize = 0;
 	std::cout << "Array: Default constructor called" << std::endl;
 }
@@ -57,7 +57,7 @@ Array<T>::Array(unsigned int n) {
 template <class T>
 Array<T>::Array(const Array &array) {
 	T *cpy = new T[array.arraySize];
-	for (int i = 0; i < array.arraySize; i++)
+	for (int i = 0; i < (int)(array.arraySize); i++)
 		cpy[i] = array[i];
 	this->array = cpy;
 	this->arraySize = array.arraySize;
@@ -89,7 +89,7 @@ int Array<T>::size() const {return (this->arraySize);}
 
 template <class T>
 T &Array<T>::operator[](int index) const {
-	if (index < 0 || index >= this->arraySize)
+	if (index < 0 || index >= (int)(this->arraySize))
 		throw OutOfLimits();
 	return (this->array[index]);
 }

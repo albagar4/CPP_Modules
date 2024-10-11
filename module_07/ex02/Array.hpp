@@ -57,7 +57,7 @@ Array<T>::Array(unsigned int n) {
 template <class T>
 Array<T>::Array(const Array &array) {
 	T *cpy = new T[array.arraySize];
-	for (int i; i < array.arraySize; i++)
+	for (int i = 0; i < array.arraySize; i++)
 		cpy[i] = array[i];
 	this->array = cpy;
 	this->arraySize = array.arraySize;
@@ -69,7 +69,7 @@ Array<T> &Array<T>::operator=(const Array &array) {
 	if (this->array)
 		delete [] this->array;
 	T *cpy = new T[array.arraySize];
-	for (int i; i < array.arraySize; i++)
+	for (int i = 0; i < array.arraySize; i++)
 		cpy[i] = array[i];
 	this->array = cpy;
 	this->arraySize = array.arraySize;
@@ -91,7 +91,6 @@ template <class T>
 T &Array<T>::operator[](int index) const {
 	if (index < 0 || index >= this->arraySize)
 		throw OutOfLimits();
-	// std::cout << "I'm returning: " << this->array[index] << std::endl;
 	return (this->array[index]);
 }
 

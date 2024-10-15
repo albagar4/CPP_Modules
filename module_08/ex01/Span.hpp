@@ -25,13 +25,22 @@
 class Span {
 private:
 	unsigned int _size;
-	std::vector<int> *_span;
+	std::vector<int> _span;
 public:
 	Span();
 	Span(unsigned int N);
 	Span(const Span &span);
 	Span &operator=(const Span &span);
 	~Span();
+	void addNumber(int nbr);
+	void shortestSpan(void);
+	void longestSpan(void);
+	class FullSpanError: public std::exception {
+		const char *what() const throw();
+	};
+	class InvalidSize: public std::exception {
+		const char *what() const throw();
+	};
 };
 
 #endif

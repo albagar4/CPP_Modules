@@ -6,7 +6,8 @@ Span::Span() {
 }
 
 Span::Span(unsigned int N) {
-	
+	// std::cout << "Span: Parameterized constructor called" << std::endl;
+	this->_size = N;
 }
 
 Span::~Span() {
@@ -26,4 +27,21 @@ Span &Span::operator=(const Span &span) {
 	}
 	// std::cout << "Span: Copy assignment operator called" << std::endl;
 	return (*this);
+}
+
+void Span::addNumber(int nbr) {
+	if (this->_span.size() == this->_size)
+		throw FullSpanError();
+	this->_span.push_back(nbr);
+}
+
+void Span::shortestSpan(void) {
+	if (this->_span.empty() || this->_span.size() == 1)
+		throw InvalidSize();
+
+	int min_snap = INT32_MAX;
+	for (int i = 0; i < this->_span.size(); i++)
+	{
+		
+	}
 }

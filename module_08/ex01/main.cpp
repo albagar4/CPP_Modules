@@ -19,10 +19,11 @@ int main(void) {
 	}
 	{
 		int size = 10000;
-		int *nbr_list = new int[size];
-		Span error_test(10);
+		std::vector<int> nbr_list;
+		// Span error_test(10);
 		Span test(size);
 
+		nbr_list.resize(size);
 		for (int i = 0; i < size; i++)
 			nbr_list[i] = rand();
 		try {
@@ -34,7 +35,6 @@ int main(void) {
 		catch (std::exception &e) {
 			std::cerr << e.what() << std::endl;
 		}
-		delete [] nbr_list;
 	}
 	return (0);
 }

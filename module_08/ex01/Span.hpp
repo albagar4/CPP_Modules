@@ -35,7 +35,7 @@ public:
 	void addNumber(int nbr);
 	int shortestSpan(void);
 	int longestSpan(void);
-	void fillSpan(int *nbr_list, int size);
+	void fillSpan(std::vector<int> &nbr_list, int size);
 	class FullSpanError: public std::exception {
 		const char *what() const throw();
 	};

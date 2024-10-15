@@ -33,8 +33,9 @@ public:
 	Span &operator=(const Span &span);
 	~Span();
 	void addNumber(int nbr);
-	void shortestSpan(void);
-	void longestSpan(void);
+	int shortestSpan(void);
+	int longestSpan(void);
+	void fillSpan(int *nbr_list, int size);
 	class FullSpanError: public std::exception {
 		const char *what() const throw();
 	};

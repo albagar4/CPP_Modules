@@ -7,7 +7,7 @@ CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 INCLUDES = -I .
 
-SOURCES = main.cpp Span.cppp
+SOURCES = main.cpp Span.cpp
 OBJECTS = $(SOURCES:.cpp=.o)
 
 all: $(NAME)

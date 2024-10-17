@@ -27,74 +27,43 @@
 #define LGRAY "\033[0;37m"
 #define BOLD "\033[1;37m"
 
-template <typename T>
-class MutantStack: public std::stack<T> {
+template <typename T, typename Container = std::deque<T> >
+class MutantStack: public std::stack<T, Container> {
 public:
-	MutantStack();
+	MutantStack() {};
 	MutantStack(const MutantStack &mutantStack);
 	MutantStack &operator=(const MutantStack &mutantStack);
-	~MutantStack();
-	T *begin(void);
-	T *end(void);
+	~MutantStack() {};
+	typename Container::iterator begin();
+	typename Container::iterator end();
 	T &operator[](int index) const;
-	typedef typename std::stack<T>::
+	typedef typename Container::iterator iterator;
+	typedef typename std::stack<T, Container>::container_type container_type;
 };
 
-template <typename T>
-MutantStack<T>::MutantStack(): std::stack<T>() {
-	std::cout << "MutantStack: Default constructor called" << std::endl;
-}
+template <typename T, typename Container>
+MutantStack<T, Container>::MutantStack(const MutantStack<T, Container> &mutantStack): std::stack<T, Container>(mutantStack) {}
 
-template <typename T>
-MutantStack<T>::MutantStack(const MutantStack &mutantStack) {
-	std::cout << "MutantStack: Copy constructor called" << std::endl;
-}
-
-template <typename T>
-MutantStack<T> &MutantStack<T>::operator=(const MutantStack &mutantStack) {
-	std::cout << "MutantStack: Copy operator constructor called" << std::endl;
+template <typename T, typename Container>
+MutantStack<T, Container> &MutantStack<T, Container>::operator=(const MutantStack &mutantStack) {
+	if (this != &mutantStack) {
+		std::stack<T, Container>::operator=(mutantStack);
+	}
 	return (*this);
 }
 
-template <typename T>
-MutantStack<T>::~MutantStack() {
-	std::cout << "MutantStack: Destructor called" << std::endl;
-}
-
-template <typename T>
-T *MutantStack<T>::begin(void) {
+template <typename T, typename Container>
+typename Container::iterator MutantStack<T, Container>::begin() {
 	return (this->c.begin());
-	// if (this.empty())
-	// 	throw EmptyStack();
-
-	// MutantStack cpy = this;
-	// for (int i = this.size(); i > 1; i--)
-	// 	cpy.pop();
-	// return (&cpy.top());
 }
 
-template <typename T>
-T *MutantStack<T>::end(void) {
-	if (this.empty())
-		throw EmptyStack();
-	return (&this.top());
+template <typename T, typename Container>
+typename Container::iterator MutantStack<T, Container>::end() {
+	return (this->c.end());
 }
-
-template <typename T>
-T &MutantStack<T>::operator[](int index) const {
-	if (index < 0 || index > (this.size() - 1))
-		throw WrongIndex();
-	if (this.empty())
-		throw EmptyStack();
-	
-	MutantStack cpy = this;
-	for (int i = (size - 1); i > 0; i--)
-	{
-		if (i == index)
-			return (cpy.top());
-		cpy.pop();
-	}
-	return (NULL);
+template <typename T, typename Container>
+T &MutantStack<T, Container>::operator[](int index) const {
+	return (this->c[index]);
 }
 
 #endif

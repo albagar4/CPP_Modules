@@ -27,6 +27,8 @@ public:
 
 	void determineValue(void);
 	bool checkInput(std::string line);
+	int daysDifference(std::string date1, std::string date2);
+	float closestDate(void);
 private:
 	BitcoinExchange();
 	std::map<std::string, float> map;
@@ -34,6 +36,7 @@ private:
 	std::string input;
 	std::string date;
 	std::string value;
+	float result;
 };
 
 bool isLeapYear(int year);

@@ -78,8 +78,13 @@ void BitcoinExchange::determineValue(void) {
 		}
 		else
 			line = this->input.substr(start);
-		if (checkInput(line)) {
-			if (this->map.find(this->date) != this->map.end())
+		if (this->checkInput(line)) {
+			std::map<std::string, float>::iterator it = this->map.find(this->date);
+			if (it != this->map.end())
+				this->result = it->second * atof(this->value.c_str());
+			else
+				this->result = this->closestDate();
+			std::cout << this->date << " => " << this->value << " = " << this->result << std::endl;
 		}
 	}
 }
@@ -96,12 +101,12 @@ bool BitcoinExchange::checkInput(std::string line) {
 	if (!validateDate(this->date))
 		return (false);
 
-	for (int i = 0; i < this->value.size(); i++) {
-		if (!isdigit(this->value[i]) || this->value[i] != '.') {
+	for (long unsigned int i = 0; i < this->value.size(); i++) {
+		if (!isdigit(this->value[i]) && this->value[i] != '.') {
 			if (this->value[0] == '-')
-				std::cout << "Error: not a positive number";
+				std::cout << "Error: not a positive number" << std::endl;
 			else
-				std::cout << "Error: value is not a number";
+				std::cout << "Error: value is not a number" << std::endl;
 			return (false);
 		}
 	}
@@ -137,4 +142,39 @@ bool validateDate(std::string date) {
         return (false);
     }
     return (true);
+}
+
+int BitcoinExchange::daysDifference(std::string date1, std::string date2) {
+	int year1 = std::atoi(date1.substr(0, 4).c_str());
+	int month1 = std::atoi(date1.substr(5, 2).c_str());
+	int day1 = std::atoi(date1.substr(8, 2).c_str());
+
+	int year2 = std::atoi(date2.substr(0, 4).c_str());
+	int month2 = std::atoi(date2.substr(5, 2).c_str());
+	int day2 = std::atoi(date2.substr(8, 2).c_str());
+
+	int totalDays1 = year1 * 365 + month1 * 30 + day1;
+	int totalDays2 = year2 * 365 + month2 * 30 + day2;
+
+	if (totalDays1 - totalDays2 <= 0)
+		return (INT32_MAX);
+	else
+		return (totalDays1 - totalDays2);
+}
+
+float BitcoinExchange::closestDate(void) {
+	std::map<std::string, float>::const_iterator it = this->map.begin();
+    std::string closestDate = it->first;
+    int compare = daysDifference(this->date, it->first);
+
+	while (it != this->map.end()) {
+		int difference = daysDifference(this->date, it->first);
+		if (difference < compare) {
+			compare = difference;
+			closestDate = it->first;
+		}
+		++it;
+	}
+	it = this->map.find(closestDate);
+	return (it->second * atof(this->value.c_str()));
 }

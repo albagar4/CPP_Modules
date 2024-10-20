@@ -3,7 +3,8 @@
 int main(int argc, char **argv) {
 	if (argc != 3) {
 		std::cout << "Incorrect nbr of parameters" << std::endl;
-		std::cout << "Usage: ./btc <filename>" << std::endl;
+		std::cout << "Usage: ./btc <database.csv> <filename>" << std::endl;
+		std::cout << "** Erase the titles from the database **" << std::endl;
 	}
 	else {
 		std::ifstream csv(argv[1]);
@@ -19,6 +20,7 @@ int main(int argc, char **argv) {
 		
 		BitcoinExchange test(file, sheet);
 		test.lineDivision();
+		test.determineValue();
 		csv.close();
 		input.close();
 	}

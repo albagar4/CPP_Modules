@@ -7,7 +7,7 @@ bool correctChar(char c) {
 	return (true);
 }
 
-int evaluatePhase(int first, int second, char c) {
+float evaluatePhase(float first, float second, char c) {
 	if (c == '+')
 		return (first + second);
 	else if (c == '-')
@@ -18,9 +18,13 @@ int evaluatePhase(int first, int second, char c) {
 }
 
 int evaluateRPN(char *argv) {
-	std::stack<int> nbrs;
-	int result = 0;
+	std::stack<float> nbrs;
+	float result = 0;
 
+	if (strlen(argv) == 1 && isdigit(argv[0])) {
+		std::cout << argv[0] << std::endl;
+		return (0);
+	}
 	for (long unsigned int i = 0; i < strlen(argv); i++) {
 		if (!correctChar(argv[i])) {
 			std::cout << "Error: invalid character: " << argv[i] << std::endl;
@@ -32,16 +36,16 @@ int evaluateRPN(char *argv) {
 				return (-1);
 			}
 			else
-				nbrs.push(argv[i] - '0');
+				nbrs.push(atof(&argv[i]));
 		}
 		else if (argv[i] == '+' || argv[i] == '-' || argv[i] == '*' || argv[i] == '/') {
 			if (nbrs.empty() || nbrs.size() < 2 || (argv[i + 1] != ' ' && argv[i + 1] != '	' && argv[i + 1] != '\0')) {
 				std::cout << "Error: bad format. Operators must be placed after the values and followed by space or tab" << std::endl;
 				return (-1);
 			}
-			int second = nbrs.top();
+			float second = nbrs.top();
 			nbrs.pop();
-			int first = nbrs.top();
+			float first = nbrs.top();
 			nbrs.pop();
 			if (argv[i] == '/' && (first == 0 || second == 0)) {
 				std::cout << "Error: divisions by 0 are not allowed" << std::endl;

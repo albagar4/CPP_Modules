@@ -13,7 +13,7 @@
 #include <stack>
 
 bool correctChar(char c);
-float evaluatePhase(int first, int second, char c);
+float evaluatePhase(float first, float second, char c);
 int evaluateRPN(char *argv);
 
 #endif

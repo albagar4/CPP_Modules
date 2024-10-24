@@ -54,7 +54,7 @@ int evaluateRPN(char *argv) {
 				nbrs.pop();
 				float first = nbrs.top();
 				nbrs.pop();
-				if (argv[i] == '/' && (first == 0 || second == 0)) {
+				if (argv[i] == '/' && second == 0) {
 					std::cout << "Error: divisions by 0 are not allowed" << std::endl;
 					return (-1);
 				}

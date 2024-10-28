@@ -30,7 +30,7 @@ void easyfind(T &data, int nbr) {
 	typename T::iterator p = std::find(data.begin(), data.end(), nbr);
 
 	if (p != data.end())
-		std::cout << "Element found in position: " << *p << std::endl;
+		std::cout << "Element found: " << *p << std::endl;
 	else
 		throw std::runtime_error("Element is not present");
 }

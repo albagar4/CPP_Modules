@@ -1,14 +1,14 @@
 #include "BitcoinExchange.hpp"
 
 int main(int argc, char **argv) {
-	if (argc != 3) {
+	if (argc != 2) {
 		std::cout << "Incorrect nbr of parameters" << std::endl;
 		std::cout << "Usage: ./btc <database.csv> <filename>" << std::endl;
 		std::cout << "** Erase the titles from the database **" << std::endl;
 	}
 	else {
-		std::ifstream csv(argv[1]);
-		std::ifstream input(argv[2]);
+		std::ifstream csv("data.csv");
+		std::ifstream input(argv[1]);
 		if (!csv.is_open() || !input.is_open()) {
 			std::cout << "File not found" << std::endl;
 			return (0);

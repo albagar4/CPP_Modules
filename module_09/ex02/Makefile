@@ -20,6 +20,11 @@ $(NAME): $(OBJECTS)
 %.o: %.cpp
 	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
+amount:		
+		@read -p "Enter an amount of numbers: " numbers; \
+		read -p "Enter the maximum number allowed: " max; \
+		./PmergeMe `shuf -i 1-$$max -n $$numbers`
+
 clean:
 	@rm -f $(OBJECTS)
 	@echo "$(RED)Objects removed!$(RESET)"
@@ -30,4 +35,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all amount clean fclean re

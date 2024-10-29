@@ -12,7 +12,7 @@
 #include <algorithm>
 #include <vector>
 #include <deque>
-#include <time.h>
+#include <sys/time.h>
 
 class PmergeMe {
 private:
@@ -26,11 +26,13 @@ public:
 	PmergeMe(const PmergeMe &pmergeme);
 	PmergeMe &operator=(const PmergeMe &pmergeme);
 	~PmergeMe();
+	void printVector(std::string str);
+	void printDeque(std::string str);
 	void setVector(void);
 	void setDeque(void);
 	void vectorFordJohnson(std::vector<int> &base);
 	void dequeFordJohnson(std::deque<int> &base);
-	void vectorMerge(std::vector<int> &left, std::vector<int> &right);
+	void vectorMerge(std::vector<int> &base, std::vector<int> &left, std::vector<int> &right);
 	void dequeMerge(std::deque<int> &base, std::deque<int> &left, std::deque<int> &right);
 };
 

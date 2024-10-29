@@ -26,6 +26,9 @@ int main(int argc, char **argv) {
 		}
 
 		PmergeMe test(nbr_array, (argc - 1));
+
+		test.setVector();
+		test.setDeque();
 	}
 	return (0);
 }

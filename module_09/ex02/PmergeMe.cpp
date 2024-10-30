@@ -6,7 +6,7 @@
 /*   By: albagar4 <albagar4@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 11:11:17 by albagar4          #+#    #+#             */
-/*   Updated: 2024/10/30 11:11:18 by albagar4         ###   ########.fr       */
+/*   Updated: 2024/10/30 11:14:03 by albagar4         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,9 +112,9 @@ void PmergeMe::setVector(void) {
 	for (int i = 0; i < this->size; i++)
 		this->vector.push_back(this->nbr_array[i]);
 
-	// this->printVector("Before: ");
+	this->printVector("Before: ");
 	this->vectorFordJohnson(this->vector);
-	// this->printVector("After: ");
+	this->printVector("After: ");
 
 	gettimeofday(&chrono, NULL);
 	end = chrono.tv_usec;
